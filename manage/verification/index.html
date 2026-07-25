@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification – Disc-Tools</title>
+    <meta property="og:title" content="Verification – Disc-Tools">
+    <meta property="og:description" content="Set up verification for your Discord server.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <link rel="stylesheet" href="/static/css/manage.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+</head>
+<body>
+    <main class="profile-page">
+        <nav class="profile-sidebar" id="profile-sidebar">
+            <div class="profile-sidebar-section">
+                <div class="profile-sidebar-user">
+                    <div class="server-sidebar-icon" id="server-sidebar-icon"><i class="fa-solid fa-server"></i></div>
+                    <div class="profile-sidebar-name">
+                        <strong id="server-sidebar-name">Loading…</strong>
+                        <span id="server-sidebar-id">—</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-sidebar-section">
+                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                    Server
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="profile-sidebar-section-items">
+                    <a href="" class="profile-nav-item" id="nav-overview" data-panel="overview">
+                        <i class="fa-solid fa-house"></i> <span>Overview</span>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-sidebar-section">
+                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                    Features
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="profile-sidebar-section-items">
+                    <a href="" class="profile-nav-item active" id="nav-verification" data-panel="verification">
+                        <i class="fa-solid fa-circle-check"></i> <span>Verification</span>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-sidebar-bottom">
+                <a href="" class="profile-nav-item" id="nav-settings">
+                    <i class="fa-solid fa-gear"></i> <span>Settings</span>
+                </a>
+                <a href="/my-servers" class="profile-nav-item"><i class="fa-solid fa-arrow-left"></i> <span>Back to Servers</span></a>
+            </div>
+        </nav>
+        <div class="profile-panel">
+            <h2><i class="fa-solid fa-circle-check"></i> Verification</h2>
+            <p class="profile-panel-sub" id="server-sub">—</p>
+
+            <div class="modal-overlay" id="role-warning-modal" hidden>
+                <div class="modal-card">
+                    <div class="modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <h2>Role Hierarchy Warning</h2>
+                    <p>The bot's role must be <strong>above</strong> the Verified and Unverified roles in the server's role list. <a href="https://support.discord.com/hc/en-us/articles/214836687-Role-Management-101" target="_blank">Learn more</a></p>
+                    <button class="btn-modal-close" onclick="document.getElementById('role-warning-modal').hidden = true">Got it</button>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <div class="setting-label">Verification Channel</div>
+                        <div class="setting-desc">Channel where the verification embed will be sent.</div>
+                    </div>
+                    <div class="setting-control">
+                        <select id="setting-verify-category">
+                            <option value="">All Categories</option>
+                        </select>
+                        <select id="setting-verify-channel">
+                            <option value="">— None —</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <div class="setting-label">Unverified Role</div>
+                        <div class="setting-desc">Role given to users who haven't verified yet.</div>
+                    </div>
+                    <div class="setting-control">
+                        <select id="setting-unverified-role">
+                            <option value="">— None —</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <div class="setting-label">Verified Role</div>
+                        <div class="setting-desc">Role given to users after successful verification.</div>
+                    </div>
+                    <div class="setting-control">
+                        <select id="setting-verified-role">
+                            <option value="">— None —</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <div class="setting-label">Verification Logs</div>
+                        <div class="setting-desc">Channel where verification events are logged.</div>
+                    </div>
+                    <div class="setting-control">
+                        <select id="setting-verify-log-category">
+                            <option value="">All Categories</option>
+                        </select>
+                        <select id="setting-verify-log-channel">
+                            <option value="">— None —</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Embed Customization</h3>
+            <div class="settings-card">
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <div class="setting-label">Title</div>
+                        <div class="setting-desc">The title of the verification embed.</div>
+                    </div>
+                    <div class="setting-control">
+                        <input type="text" id="setting-verify-title" class="setting-input" placeholder="Verify your account" maxlength="256">
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <div class="setting-label">Body</div>
+                        <div class="setting-desc">The description text shown in the embed (supports markdown).</div>
+                    </div>
+                    <div class="setting-control">
+                        <textarea id="setting-verify-body" class="setting-textarea" rows="3" placeholder="Click the button below to verify..." maxlength="4000"></textarea>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <div class="setting-label">Color</div>
+                        <div class="setting-desc">Hex color for the embed accent bar.</div>
+                    </div>
+                    <div class="setting-control">
+                        <input type="text" id="setting-verify-color" class="setting-input setting-input-small" placeholder="#9b59b6" maxlength="7">
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <div class="setting-label">Image</div>
+                        <div class="setting-desc">Large image at the bottom of the embed. Upload or paste a URL.</div>
+                    </div>
+                    <div class="setting-control setting-control-col">
+                        <input type="file" id="setting-verify-image-file" accept="image/*" onchange="uploadImage('image')" style="display:none">
+                        <input type="text" id="setting-verify-image" class="setting-input" placeholder="https://...">
+                        <button class="btn-upload" onclick="document.getElementById('setting-verify-image-file').click()">Upload</button>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <div class="setting-label">Thumbnail</div>
+                        <div class="setting-desc">Small image top-right (optional). Upload or paste a URL.</div>
+                    </div>
+                    <div class="setting-control setting-control-col">
+                        <input type="file" id="setting-verify-thumbnail-file" accept="image/*" onchange="uploadImage('thumbnail')" style="display:none">
+                        <input type="text" id="setting-verify-thumbnail" class="setting-input" placeholder="https://...">
+                        <button class="btn-upload" onclick="document.getElementById('setting-verify-thumbnail-file').click()">Upload</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Preview</h3>
+            <div class="embed-preview" id="embed-preview">
+                <div class="embed-preview-inner" id="embed-preview-inner">
+                    <div class="embed-preview-thumb" id="preview-thumb"></div>
+                    <div class="embed-preview-title" id="preview-title">Verify your account</div>
+                    <div class="embed-preview-body" id="preview-body">Click the button below to verify your account and gain access to the server.</div>
+                    <div class="embed-preview-image" id="preview-image"></div>
+                </div>
+            </div>
+
+            <div class="settings-actions">
+                <button class="btn-discord" id="btn-resend-embed" onclick="resendEmbed()">Resend Embed</button>
+                <span class="save-status" id="resend-status"></span>
+            </div>
+        </div>
+        <div class="unsaved-bar" id="unsaved-bar">
+            <div class="unsaved-bar-text">You have unsaved changes</div>
+            <div class="unsaved-bar-actions">
+                <button class="unsaved-btn-discard" id="btn-discard">Discard</button>
+                <button class="unsaved-btn-save" id="btn-save-bar">Save Changes</button>
+            </div>
+        </div>
+        <div class="toast" id="toast" hidden></div>
+    </main>
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script src="/static/js/server-verification.js"></script>
+</body>
+</html>

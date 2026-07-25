@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Restricted – Disc-Tools</title>
+<meta property="og:title" content="Disc-Tools">
+<meta property="og:description" content="Discord utilities — alt account detection, quote GIFs, and more.">
+<meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/static/css/blocked.css">
+<link rel="stylesheet" href="/static/css/blocked-vpn.css">
+<link rel="stylesheet" href="/static/icons/css/all.min.css">
+<link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+</head>
+<body>
+<div class="blocked-card">
+<div class="blocked-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+<h1>Access Restricted</h1>
+<p>Our security system detected a VPN, Proxy, or Hosting connection. Access is restricted for these connection types.</p>
+
+<div class="vpn-details" id="vpn-details">
+<div class="vpn-row"><span class="vpn-label">IP Address</span><span class="vpn-value" id="det-ip">—</span></div>
+<div class="vpn-row"><span class="vpn-label">Type</span><span class="vpn-value" id="det-type">—</span></div>
+<div class="vpn-row"><span class="vpn-label">Provider</span><span class="vpn-value" id="det-provider">—</span></div>
+<div class="vpn-row"><span class="vpn-label">ASN</span><span class="vpn-value" id="det-asn">—</span></div>
+</div>
+
+<a href="/" class="blocked-btn">Retry Connection</a>
+
+<div class="blocked-divider">or</div>
+
+<a href="/api/auth/login" class="blocked-btn blocked-btn-discord"><i class="fa-brands fa-discord"></i> Login with Discord</a>
+<p class="blocked-note">Logged-in users are exempt from this check.</p>
+</div>
+<script src="/static/js/blocked-vpn.js"></script>
+</body>
+</html>

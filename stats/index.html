@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats – Disc-Tools</title>
+    <meta name="description" content="Disc-Tools statistics — servers, users, and community growth.">
+    <meta property="og:title" content="Stats – Disc-Tools">
+    <meta property="og:description" content="Disc-Tools statistics — servers, users, and community growth.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/stats.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="header-left link-reset">
+                <div class="header-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools"></div>
+                <span class="header-title">Disc<span class="accent">-</span>Tools</span>
+            </a>
+            <nav class="header-nav">
+                <a href="/" class="nav-link">Dashboard</a>
+                <a href="/premium" class="nav-link">Premium</a>
+                <a href="/stats" class="nav-link active">Stats</a>
+            </nav>
+            <div class="header-right" id="header-right"></div>
+        </div>
+    </header>
+
+    <main class="stats-page">
+        <div class="stats-hero">
+            <h1><i class="fa-solid fa-chart-line"></i> Statistics</h1>
+            <p>Real-time numbers across all servers running Disc-Tools.</p>
+        </div>
+
+        <div class="stat-cards">
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="fa-solid fa-server"></i></div>
+                <div class="stat-card-value" id="stat-servers">—</div>
+                <div class="stat-card-label">Servers</div>
+                <div class="stat-card-sub">Guilds using Disc-Tools</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="stat-card-value" id="stat-community">—</div>
+                <div class="stat-card-label">Community Members</div>
+                <div class="stat-card-sub">On our Discord server</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="fa-solid fa-globe"></i></div>
+                <div class="stat-card-value" id="stat-total">—</div>
+                <div class="stat-card-label">Total Users</div>
+                <div class="stat-card-sub">Across all servers</div>
+            </div>
+        </div>
+
+        <section class="chart-section">
+            <div class="chart-header">
+                <h2><i class="fa-solid fa-chart-bar"></i> Daily History</h2>
+                <div class="chart-toggle">
+                    <button onclick="loadHistory(7)" id="btn-7d" class="active">7 days</button>
+                    <button onclick="loadHistory(30)" id="btn-30d">30 days</button>
+                </div>
+            </div>
+            <div class="chart-legend">
+                <div class="chart-legend-item"><span class="chart-legend-dot servers"></span> Servers</div>
+                <div class="chart-legend-item"><span class="chart-legend-dot community"></span> Community</div>
+                <div class="chart-legend-item"><span class="chart-legend-dot total"></span> Total Users</div>
+            </div>
+            <div class="chart-area" id="chart-area">
+                <svg viewBox="0 0 800 320" preserveAspectRatio="none"></svg>
+                <div class="chart-tooltip" id="chart-tooltip" hidden></div>
+            </div>
+            <div class="chart-labels" id="chart-labels"></div>
+        </section>
+
+        <div class="comparison-row">
+            <div class="comp-card">
+                <div>
+                    <div class="comp-label"><i class="fa-solid fa-server"></i> Servers</div>
+                    <div class="comp-value" id="comp-servers-val">—</div>
+                </div>
+                <div class="comp-diff neutral" id="comp-servers">—</div>
+            </div>
+            <div class="comp-card">
+                <div>
+                    <div class="comp-label"><i class="fa-solid fa-users"></i> Community</div>
+                    <div class="comp-value" id="comp-community-val">—</div>
+                </div>
+                <div class="comp-diff neutral" id="comp-community">—</div>
+            </div>
+            <div class="comp-card">
+                <div>
+                    <div class="comp-label"><i class="fa-solid fa-globe"></i> Total Users</div>
+                    <div class="comp-value" id="comp-total-val">—</div>
+                </div>
+                <div class="comp-diff neutral" id="comp-total">—</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-brand-row">
+                    <div class="footer-brand-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools"></div>
+                    <span class="footer-brand-name">Disc<span class="accent">-</span>Tools</span>
+                </div>
+                <div class="footer-brand-slogan">Professional Discord Utilities</div>
+            </div>
+            <div class="footer-col">
+                <h3>Product</h3>
+                <a href="/">Dashboard</a>
+                <a href="/invite">Invite Bot</a>
+                <a href="/premium">Premium</a>
+            </div>
+            <div class="footer-col">
+                <h3>Socials</h3>
+                <a href="https://discord.gg/rtRs8rhj5u">Discord</a>
+                <a href="https://disc-tools.de">Website</a>
+                <a href="https://top.gg/bot/1508899864602345582">Top.gg</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <a href="https://discord.gg/rtRs8rhj5u">Support Server</a>
+                <a href="/invite">Invite Bot</a>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <a href="/legal/imprint">Imprint</a>
+                <a href="/legal/privacy-policy">Privacy Policy</a>
+                <a href="/legal/terms-of-service">Terms of Service</a>
+                <a href="/legal/refund-policy">Refund Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="year"></span> Disc-Tools. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script src="/static/js/stats.js"></script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium – Disc-Tools</title>
+    <meta name="description" content="Unlock premium Discord utilities — alt account detection, premium quote GIFs, and more. Starting at €5/month.">
+    <meta property="og:title" content="Premium – Disc-Tools">
+    <meta property="og:description" content="Unlock premium Discord utilities — alt account detection, premium quote GIFs, and more. Starting at €5/month.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+    
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="header-left link-reset">
+                <div class="header-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools"></div>
+                <span class="header-title">Disc<span class="accent">-</span>Tools</span>
+            </a>
+            <nav class="header-nav">
+                <a href="/" class="nav-link">Dashboard</a>
+                <a href="/premium" class="nav-link active">Premium</a>
+                <a href="/stats" class="nav-link">Stats</a>
+            </nav>
+            <div class="header-right" id="header-right"></div>
+        </div>
+    </header>
+
+    <div class="prem-page">
+
+        <section class="prem-hero">
+            <h1>Supercharge your<br><span class="grad">Discord server</span></h1>
+            <p class="sub">Unlock powerful tools used by thousands of servers — starting at just €5/month.</p>
+        </section>
+
+        <!-- Login notice (shown when not authed) -->
+        <div class="login-notice" id="login-notice">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Log in with Discord to <a href="/api/auth/login">connect your account</a> before purchasing.</span>
+        </div>
+
+        <!-- Main content -->
+        <div class="prem-main">
+
+            <!-- Left: Pricing cards -->
+            <div class="pricing-stack">
+
+                <!-- Subscribe card -->
+                <div class="p-card" id="card-sub">
+                    <div class="p-card-bar"></div>
+                    <div class="p-card-head" onclick="toggleCard('card-sub')">
+                        <div class="p-card-head-left">
+                            <div class="p-card-icon purple"><i class="fa-solid fa-crown"></i></div>
+                            <div>
+                                <div class="p-card-label">Disc-Tools Premium</div>
+                                <div class="p-card-sublabel">Monthly subscription</div>
+                            </div>
+                        </div>
+                        <div class="p-card-right">
+                            <div class="p-card-price">
+                                <div class="amount">€5</div>
+                                <div class="period">per month <span class="tax-note">excl. tax</span></div>
+                            </div>
+                            <i class="fa-solid fa-chevron-down p-card-chevron" id="chevron-sub"></i>
+                        </div>
+                    </div>
+                    <div class="p-card-body" id="body-sub">
+                        <div class="p-card-content">
+                            <ul class="feat-list">
+                                <li>
+                                    <span class="fi"><i class="fa-solid fa-shield-halved"></i></span>
+                                    Alt Account Detection — find linked accounts
+                                </li>
+                                <li>
+                                    <span class="fi"><i class="fa-solid fa-image"></i></span>
+                                    Premium Quote GIFs — no watermark, HD quality
+                                </li>
+                                <li>
+                                    <span class="fi"><i class="fa-solid fa-crown"></i></span>
+                                    Exclusive Premium Role on Discord server
+                                </li>
+                                <li>
+                                    <span class="fi"><i class="fa-solid fa-bolt"></i></span>
+                                    Early access to new features
+                                </li>
+                                <li class="muted">
+                                    <span class="fi"><i class="fa-solid fa-headset"></i></span>
+                                    Priority support — coming soon
+                                </li>
+                            </ul>
+                            <button class="btn-prem" id="btn-buy" onclick="startCheckout()">
+                                Subscribe Now <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                            <p class="prem-fine">Cancel anytime &mdash; no strings attached.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gift card -->
+                <div class="p-card gift" id="card-gift">
+                    <div class="p-card-bar"></div>
+                    <div class="p-card-head" onclick="toggleCard('card-gift')">
+                        <div class="p-card-head-left">
+                            <div class="p-card-icon pink"><i class="fa-solid fa-gift"></i></div>
+                            <div>
+                                <div class="p-card-label">Gift Premium</div>
+                                <div class="p-card-sublabel">One-time gift — 1 month</div>
+                            </div>
+                        </div>
+                        <div class="p-card-right">
+                            <div class="p-card-price">
+                                <div class="amount">€4</div>
+                                <div class="period">one-time <span class="tax-note">excl. tax</span></div>
+                            </div>
+                            <i class="fa-solid fa-chevron-down p-card-chevron" id="chevron-gift"></i>
+                        </div>
+                    </div>
+                    <div class="p-card-body" id="body-gift">
+                        <div class="p-card-content">
+                            <ul class="feat-list">
+                                <li>
+                                    <span class="fi"><i class="fa-solid fa-shield-halved"></i></span>
+                                    All Premium features for the recipient
+                                </li>
+                                <li>
+                                    <span class="fi"><i class="fa-solid fa-user-plus"></i></span>
+                                    Recipient gets their Premium role
+                                </li>
+                                <li>
+                                    <span class="fi"><i class="fa-solid fa-clock"></i></span>
+                                    1 month, applied immediately
+                                </li>
+                                <li>
+                                    <span class="fi"><i class="fa-solid fa-layer-group"></i></span>
+                                    Stacks if already Premium
+                                </li>
+                            </ul>
+
+                            <hr class="gift-sep">
+                            <p class="gift-label">Enter the recipient's Discord User ID to get started:</p>
+
+                            <div class="gift-input-row">
+                                <input
+                                    class="gift-input"
+                                    id="gift-recipient"
+                                    type="text"
+                                    placeholder="Recipient Discord User ID"
+                                    maxlength="20"
+                                    autocomplete="off"
+                                    oninput="document.getElementById('gift-user-card').style.display='none'; verifiedRecipientId = null;"
+                                >
+                                <button class="btn-check" id="btn-check" onclick="checkRecipient()">
+                                    <i class="fa-solid fa-magnifying-glass"></i> Lookup
+                                </button>
+                            </div>
+
+                            <div class="gift-user-card" id="gift-user-card">
+                                <img id="gift-avatar" src="" alt="Avatar">
+                                <div class="guc-info">
+                                    <div class="guc-name" id="gift-name"></div>
+                                    <div class="guc-user" id="gift-username"></div>
+                                    <span class="guild-badge" id="gift-badge"></span>
+                                </div>
+                                <div class="guc-actions">
+                                    <button class="guc-cancel" onclick="document.getElementById('gift-user-card').style.display='none'">Cancel</button>
+                                    <button class="guc-confirm" id="btn-confirm-gift" onclick="startGiftCheckout()">Pay &amp; Gift <i class="fa-solid fa-gift"></i></button>
+                                </div>
+                            </div>
+
+                            <button class="btn-prem gift-btn" id="btn-gift-pay" onclick="openGiftConfirm()" class="hidden">
+                                Confirm &amp; Pay <i class="fa-solid fa-gift"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /pricing-stack -->
+
+            <!-- Right: Sidebar -->
+            <div class="prem-sidebar">
+
+                <!-- What you get -->
+                <div class="sidebar-card">
+                    <h3>What's included</h3>
+                    <div class="perk-list">
+                        <div class="perk-item">
+                            <div class="pi-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="pi-txt">
+                                <strong>Alt Detection</strong>
+                                <span>Find ban-evaders &amp; linked accounts instantly.</span>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <div class="pi-icon"><i class="fa-solid fa-image"></i></div>
+                            <div class="pi-txt">
+                                <strong>Premium GIFs</strong>
+                                <span>Watermark-free, HD quote animations.</span>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <div class="pi-icon"><i class="fa-solid fa-crown"></i></div>
+                            <div class="pi-txt">
+                                <strong>Premium Role</strong>
+                                <span>Exclusive recognition in our community.</span>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <div class="pi-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <div class="pi-txt">
+                                <strong>Early Access</strong>
+                                <span>First to try every new feature we ship.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust -->
+                <div class="sidebar-card">
+                    <h3>Why Premium?</h3>
+                    <div class="trust-list">
+                        <div class="trust-item">
+                            <i class="fa-solid fa-check-circle"></i>
+                            Cancel anytime, no lock-in
+                        </div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-check-circle"></i>
+                            Secure payment via Stripe
+                        </div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-check-circle"></i>
+                            Instant activation
+                        </div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-check-circle"></i>
+                            Supports ongoing development
+                        </div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-check-circle"></i>
+                            More perks coming regularly
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /prem-sidebar -->
+        </div><!-- /prem-main -->
+
+        <!-- Free vs Premium comparison -->
+        <section class="compare-section">
+            <h2 class="compare-heading">Free vs <span class="grad">Premium</span></h2>
+            <div class="compare-table-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th class="free-col">Free</th>
+                            <th class="prem-col">Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alt Account Detection</td>
+                            <td><span class="cmp-no"><i class="fa-solid fa-xmark"></i></span></td>
+                            <td><span class="cmp-yes"><i class="fa-solid fa-check"></i> Full link analysis</span></td>
+                        </tr>
+                        <tr>
+                            <td>Quote GIFs</td>
+                            <td><span class="cmp-txt">With watermark</span></td>
+                            <td><span class="cmp-yes"><i class="fa-solid fa-check"></i> HD &amp; no watermark</span></td>
+                        </tr>
+                        <tr>
+                            <td>Exclusive Discord Role</td>
+                            <td><span class="cmp-no"><i class="fa-solid fa-xmark"></i></span></td>
+                            <td><span class="cmp-yes"><i class="fa-solid fa-check"></i> Premium community role</span></td>
+                        </tr>
+                        <tr>
+                            <td>Early Access</td>
+                            <td><span class="cmp-no"><i class="fa-solid fa-xmark"></i></span></td>
+                            <td><span class="cmp-yes"><i class="fa-solid fa-check"></i> New features first</span></td>
+                        </tr>
+                        <tr>
+                            <td>Priority Support</td>
+                            <td><span class="cmp-txt">Community support</span></td>
+                            <td><span class="cmp-yes"><i class="fa-solid fa-check"></i> Dedicated help</span></td>
+                        </tr>
+                        <tr>
+                            <td>Watermarks</td>
+                            <td><span class="cmp-no"><i class="fa-solid fa-xmark"></i></span></td>
+                            <td><span class="cmp-yes"><i class="fa-solid fa-check"></i> Branding-free</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Bottom perks grid -->
+        <div class="prem-perks-bottom">
+            <h2>Everything you unlock</h2>
+            <div class="perks-grid">
+                <div class="pg-card">
+                    <div class="pg-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>Alt Detection</h4>
+                    <p>Identify ban-evaders and linked alt accounts instantly.</p>
+                </div>
+                <div class="pg-card">
+                    <div class="pg-icon"><i class="fa-solid fa-image"></i></div>
+                    <h4>Premium GIFs</h4>
+                    <p>HD quality, no watermark, extra fonts and styles.</p>
+                </div>
+                <div class="pg-card">
+                    <div class="pg-icon"><i class="fa-solid fa-crown"></i></div>
+                    <h4>Premium Role</h4>
+                    <p>Exclusive role in the Disc-Tools Discord server.</p>
+                </div>
+                <div class="pg-card">
+                    <div class="pg-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h4>Early Access</h4>
+                    <p>Be the first to try every new command and feature.</p>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /prem-page -->
+
+    <div class="toast" id="toast"><i class="fa-solid fa-circle-info"></i> <span id="toast-msg"></span></div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-brand-row">
+                    <div class="footer-brand-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools"></div>
+                    <span class="footer-brand-name">Disc<span class="accent">-</span>Tools</span>
+                </div>
+                <div class="footer-brand-slogan">Professional Discord Utilities</div>
+            </div>
+            <div class="footer-col">
+                <h3>Product</h3>
+                <a href="/">Dashboard</a>
+                <a href="/invite">Invite Bot</a>
+                <a href="/premium">Premium</a>
+            </div>
+            <div class="footer-col">
+                <h3>Socials</h3>
+                <a href="https://discord.gg/rtRs8rhj5u">Discord</a>
+                <a href="https://disc-tools.de">Website</a>
+                <a href="https://top.gg/bot/1508899864602345582">Top.gg</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <a href="https://discord.gg/rtRs8rhj5u">Support Server</a>
+                <a href="/invite">Invite Bot</a>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <a href="/legal/imprint">Imprint</a>
+                <a href="/legal/privacy-policy">Privacy Policy</a>
+                <a href="/legal/terms-of-service">Terms of Service</a>
+                <a href="/legal/refund-policy">Refund Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="year"></span> Disc-Tools. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script src="/static/js/premium.js"></script>
+</body>
+</html>

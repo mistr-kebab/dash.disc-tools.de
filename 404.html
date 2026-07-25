@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 – Page Not Found | Disc-Tools</title>
+    <meta property="og:title" content="Disc-Tools">
+    <meta property="og:description" content="Discord utilities — alt account detection, quote GIFs, and more.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/404.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+</head>
+<body>
+
+    <main class="err-page">
+        <div class="err-card">
+
+            <span class="err-number">404</span>
+
+            <div class="err-icon-wrap">
+                <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+
+            <h1>Lost in space</h1>
+            <p>This page doesn't exist or may have been moved. Let's get you back somewhere familiar.</p>
+
+            <div class="err-btns">
+                <a href="/" class="btn-home"><i class="fa-solid fa-house"></i> Back to Dashboard</a>
+                <button class="btn-back" onclick="history.length > 1 ? history.back() : window.location.href='/'">
+                    <i class="fa-solid fa-arrow-left"></i> Go Back
+                </button>
+            </div>
+
+            <div class="err-divider"></div>
+
+            <nav class="err-quick" aria-label="Quick links">
+                <a href="/servers" class="err-ql"><i class="fa-solid fa-server"></i> Servers</a>
+                <a href="/premium" class="err-ql"><i class="fa-solid fa-crown"></i> Premium</a>
+                <a href="/invite" class="err-ql"><i class="fa-solid fa-plus"></i> Invite Bot</a>
+                <a href="https://discord.gg/rtRs8rhj5u" class="err-ql" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i> Support</a>
+            </nav>
+
+        </div>
+    </main>
+
+    <footer class="err-footer">
+        <span>&copy; <span id="year"></span> Disc-Tools &middot; <a href="/legal/imprint">Imprint</a> &middot; <a href="/legal/privacy-policy">Privacy</a></span>
+    </footer>
+
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script src="/static/js/404.js"></script>
+</body>
+</html>

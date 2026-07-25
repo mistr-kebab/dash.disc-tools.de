@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disc-Tools Dashboard</title>
+    <meta name="description" content="Invite Disc-Tools, manage your Discord servers, and handle Premium from one place.">
+    <meta property="og:title" content="Disc-Tools">
+    <meta property="og:description" content="Professional Discord Utilities — alt account detection, quote GIFs, and more.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/landing.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+</head>
+<body class="page-landing">
+    <header>
+        <div class="header-inner">
+            <a href="/" class="header-left link-reset">
+                <div class="header-logo">
+                    <img src="/static/assets/img/icon.png" alt="Disc-Tools">
+                </div>
+                <span class="header-title">Disc<span class="accent">-</span>Tools</span>
+            </a>
+            <nav class="header-nav">
+                <a href="/" class="nav-link active">Dashboard</a>
+                <a href="/premium" class="nav-link">Premium</a>
+                <a href="/stats" class="nav-link">Stats</a>
+            </nav>
+            <div class="header-right" id="header-right">
+                <a class="btn-discord" href="/api/auth/login">
+                    <i class="fa-brands fa-discord"></i>
+                    Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="lp-hero">
+        <div class="lp-hero-visual" aria-hidden="true">
+            <div class="lp-hero-bg"></div>
+            <div class="lp-hero-shade"></div>
+            <div class="lp-hero-blur"></div>
+        </div>
+        <div class="lp-wide lp-hero-body">
+            <div class="lp-hero-copy">
+                <h1>Disc<span class="accent">-</span>Tools</h1>
+                <p class="lp-hero-lead">Discord utilities for your server — quote GIFs, lookups, user history, and alt detection. This dashboard handles invites, server overview, and Premium.</p>
+                <div class="lp-hero-actions" id="hero-actions">
+                    <a href="/invite" class="lp-btn lp-btn-primary"><i class="fa-solid fa-plus"></i> Add to Server</a>
+                    <a href="https://discord.gg/rtRs8rhj5u" class="lp-btn lp-btn-ghost"><i class="fa-brands fa-discord"></i> Support</a>
+                </div>
+            </div>
+            <aside class="lp-hero-aside">
+                <div class="lp-hero-aside-item">
+                    <span class="lp-hero-aside-icon"><i class="fa-brands fa-discord"></i></span>
+                    <div>
+                        <strong>Bot</strong>
+                        <p>Commands inside Discord — quote GIFs, lookups, user history, alt&nbsp;detection.</p>
+                    </div>
+                </div>
+                <div class="lp-hero-aside-item">
+                    <span class="lp-hero-aside-icon"><i class="fa-solid fa-layer-group"></i></span>
+                    <div>
+                        <strong>Dashboard</strong>
+                        <p>Invite the bot, log in with Discord, manage servers, handle&nbsp;Premium.</p>
+                    </div>
+                </div>
+                <div class="lp-hero-aside-item">
+                    <span class="lp-hero-aside-icon"><i class="fa-solid fa-crown"></i></span>
+                    <div>
+                        <strong>Premium</strong>
+                        <p>Alt detection &middot; HD&nbsp;GIFs &middot; Exclusive&nbsp;role &middot; €5/month.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <main class="lp-main">
+        <div class="lp-wide">
+
+            <section class="lp-features">
+                <header class="lp-section-head">
+                    <h2>Features</h2>
+                    <p>What Disc-Tools does on your server</p>
+                </header>
+                <div class="lp-feature-grid">
+                    <article class="lp-feature">
+                        <span class="lp-feature-icon"><i class="fa-solid fa-image"></i></span>
+                        <h3>Quote GIFs</h3>
+                        <p>Turn a message into an animated GIF. Premium drops the watermark and increases quality.</p>
+                    </article>
+                    <article class="lp-feature">
+                        <span class="lp-feature-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
+                        <h3>User history</h3>
+                        <p>Look up previous usernames and avatars for any Discord user ID.</p>
+                    </article>
+                    <article class="lp-feature">
+                        <span class="lp-feature-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <h3>Server &amp; invite lookups</h3>
+                        <p>Get details on a guild or invite link directly from Discord.</p>
+                    </article>
+                    <article class="lp-feature lp-feature--premium">
+                        <span class="lp-feature-icon lp-feature-icon--premium"><i class="fa-solid fa-user-shield"></i></span>
+                        <h3>Alt detection <span class="lp-tag">Premium</span></h3>
+                        <p>Surface likely linked accounts when someone tries to evade a ban.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="lp-stats">
+                <div class="lp-stat">
+                    <span class="lp-stat-value" id="lp-stat-servers">—</span>
+                    <span class="lp-stat-label">Servers</span>
+                </div>
+                <div class="lp-stat">
+                    <span class="lp-stat-value" id="lp-stat-community">—</span>
+                    <span class="lp-stat-label">Community</span>
+                </div>
+                <div class="lp-stat">
+                    <span class="lp-stat-value" id="lp-stat-users">—</span>
+                    <span class="lp-stat-label">Total Users</span>
+                </div>
+                <div class="lp-stat">
+                    <span class="lp-stat-value" id="lp-stat-premium">—</span>
+                    <span class="lp-stat-label">Premium Users</span>
+                </div>
+            </section>
+
+            <section class="lp-panels">
+                <article class="lp-panel">
+                    <h2>About this dashboard</h2>
+                    <p>Log in with Discord to see every server you administrate. If Disc-Tools is already there, you can jump straight in. If not, you get a one-click invite.</p>
+                    <p>Premium subscriptions and gifts are handled here too — subscribe yourself or send someone a month for €4 via their user ID.</p>
+                </article>
+                <aside class="lp-premium">
+                    <p class="lp-premium-label">Premium</p>
+                    <p class="lp-premium-price"><strong>€5</strong> / month</p>
+                    <ul class="lp-premium-list">
+                        <li><i class="fa-solid fa-check"></i> Alt account detection</li>
+                        <li><i class="fa-solid fa-check"></i> HD quote GIFs, no watermark</li>
+                        <li><i class="fa-solid fa-check"></i> Exclusive role on our Discord</li>
+                        <li><i class="fa-solid fa-check"></i> Early access to new commands</li>
+                    </ul>
+                    <a href="/premium" class="lp-btn lp-btn-primary lp-btn-block">View plans</a>
+                    <p class="lp-premium-note">Cancel anytime · Gift from €4</p>
+                </aside>
+            </section>
+
+            <section class="lp-steps">
+                <header class="lp-section-head">
+                    <h2>Getting Started</h2>
+                    <p>Three steps to set up Disc-Tools</p>
+                </header>
+                <div class="lp-steps-grid">
+                    <div class="lp-step">
+                        <span class="lp-step-num">1</span>
+                        <h3>Invite the bot</h3>
+                        <p>Add Disc-Tools to your server with one click — no configuration needed.</p>
+                    </div>
+                    <div class="lp-step">
+                        <span class="lp-step-num">2</span>
+                        <h3>Use commands</h3>
+                        <p>Run <strong>/quote</strong>, <strong>/history</strong>, <strong>/lookup</strong> and more right in Discord.</p>
+                    </div>
+                    <div class="lp-step">
+                        <span class="lp-step-num">3</span>
+                        <h3>Go Premium</h3>
+                        <p>Unlock alt detection, HD GIFs and more for €5/month. Manage it all here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <nav class="lp-links" aria-label="Quick links">
+                <a href="/invite">Invite bot</a>
+                <span>·</span>
+                <a href="https://top.gg/bot/1508899864602345582">Top.gg</a>
+                <span>·</span>
+                <a href="https://disc-tools.de">Website</a>
+                <span>·</span>
+                <a href="https://discord.gg/rtRs8rhj5u">Support</a>
+            </nav>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-brand-row">
+                    <div class="footer-brand-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools"></div>
+                    <span class="footer-brand-name">Disc<span class="accent">-</span>Tools</span>
+                </div>
+                <div class="footer-brand-slogan">Professional Discord Utilities</div>
+            </div>
+            <div class="footer-col">
+                <h3>Product</h3>
+                <a href="/">Dashboard</a>
+                <a href="/invite">Invite Bot</a>
+                <a href="/premium">Premium</a>
+            </div>
+            <div class="footer-col">
+                <h3>Socials</h3>
+                <a href="https://discord.gg/rtRs8rhj5u">Discord</a>
+                <a href="https://disc-tools.de">Website</a>
+                <a href="https://top.gg/bot/1508899864602345582">Top.gg</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <a href="https://discord.gg/rtRs8rhj5u">Support Server</a>
+                <a href="/invite">Invite Bot</a>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <a href="/legal/imprint">Imprint</a>
+                <a href="/legal/privacy-policy">Privacy Policy</a>
+                <a href="/legal/terms-of-service">Terms of Service</a>
+                <a href="/legal/refund-policy">Refund Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="year"></span> Disc-Tools. All rights reserved.
+        </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-header">
+            <i class="fa-solid fa-cookie cookie-icon"></i>
+            <span class="cookie-title">Cookie Consent</span>
+        </div>
+        <div class="cookie-text">
+            This site uses cookies for essential functionality and analytics.
+            <a href="/legal/privacy-policy">Learn more</a>
+        </div>
+        <div class="cookie-btns">
+            <button class="cookie-btn cookie-btn-ghost" onclick="rejectAll()">Reject all</button>
+            <button class="cookie-btn cookie-btn-secondary" onclick="essentialOnly()">Only essential</button>
+            <button class="cookie-btn cookie-btn-primary" onclick="acceptAll()">Accept all</button>
+        </div>
+    </div>
+
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script src="/static/js/landing.js"></script>
+</body>
+</html>

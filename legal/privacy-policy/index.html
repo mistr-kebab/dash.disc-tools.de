@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy – Disc-Tools</title>
+    <meta property="og:title" content="Privacy Policy – Disc-Tools">
+    <meta property="og:description" content="Privacy Policy for Disc-Tools — how we handle your data.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="header-left link-reset">
+                <div class="header-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools"></div>
+                <span class="header-title">Disc<span class="accent">-</span>Tools</span>
+            </a>
+            <nav class="header-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/premium" class="nav-link">Premium</a>
+                <a href="/stats" class="nav-link">Stats</a>
+            </nav>
+            <div class="header-right" id="header-right">
+                <div class="header-loader"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="legal-container">
+        <div class="legal-hero">
+            <h1>Privacy Policy</h1>
+            <p class="legal-date">Last updated: July 23, 2026</p>
+        </div>
+
+        <nav class="legal-nav">
+            <a href="/legal/imprint">Imprint</a>
+            <a href="/legal/privacy-policy" class="active">Privacy Policy</a>
+            <a href="/legal/terms-of-service">Terms of Service</a>
+            <a href="/legal/refund-policy">Refund Policy</a>
+        </nav>
+
+        <div class="legal-card">
+            <h2>1. Controller</h2>
+            <p>The data controller responsible under the General Data Protection Regulation (GDPR) and other applicable data protection laws is:</p>
+            <p><strong>Antonio Schlömer</strong><br>Berliner Straße 30<br>26506 Norden<br>Germany</p>
+            <p>Email: <a href="mailto:info@disc-tools.de">info@disc-tools.de</a></p>
+
+            <h2>2. Hosting, CDN &amp; Security</h2>
+            <p>The Disc-Tools service — including the dashboard at <a href="https://dash.disc-tools.de">dash.disc-tools.de</a> and the website at <a href="https://disc-tools.de">disc-tools.de</a> — is operated on server infrastructure hosted by <strong>Hetzner</strong> in Helsinki, Finland. Content delivery and DDoS protection are provided through <strong>Cloudflare</strong>. All connections are encrypted via TLS.</p>
+
+            <h2>3. Server Logs</h2>
+            <p>Our web server and API log each request including your <strong>IP address, timestamp, HTTP method, requested path, HTTP status code, user agent, and any error messages</strong>. These logs are automatically rotated and kept for a maximum of 30 days. The legal basis is Art. 6(1)(f) GDPR — our legitimate interest in detecting and defending against abuse.</p>
+
+            <h2>4. Cookies</h2>
+            <p>We use the following strictly necessary cookies on the dashboard. They do not require consent under Art. 6(1)(f) GDPR:</p>
+            <ul>
+                <li><strong>dash_token</strong> — JWT session token for authentication (7 days)</li>
+                <li><strong>oauth_state</strong> — CSRF protection token during login (10 minutes)</li>
+                <li><strong>cookie_consent</strong> — stores your cookie preferences (1 year)</li>
+            </ul>
+            <p>No advertising, profiling, or third-party tracking cookies are used on the dashboard.</p>
+
+            <h2>5. Analytics</h2>
+            <p>We use a self-hosted instance of <strong>Umami Analytics</strong> on our own domain (<a href="https://umami.disc-tools.de">umami.disc-tools.de</a>) for website analytics. Umami is privacy-focused: it does not use cookies, does not collect personal data, and all data is anonymized. No data is shared with third parties. The legal basis is Art. 6(1)(f) GDPR — our legitimate interest in understanding how our services are used.</p>
+
+            <h2>6. Discord OAuth2 Login</h2>
+            <p>When you log in via Discord OAuth2, we receive your <strong>Discord user ID, username, avatar, email address, and guild memberships</strong> from the Discord API. We use this data exclusively to authenticate you and provide the dashboard. Your IP address is <strong>SHA-256 hashed with a per-service salt</strong> before storage — the raw IP is never persisted. We store this hashed IP for session tracking and abuse prevention. The legal basis is Art. 6(1)(b) GDPR — performance of a contract (providing the authenticated dashboard service).</p>
+
+            <h2>7. VPN &amp; Proxy Detection</h2>
+            <p>For non-authenticated dashboard visitors, we query <strong>proxycheck.io</strong> with your IP address to detect VPN, proxy, or hosting connections. Your IP is transmitted to proxycheck.io for this purpose. If a VPN/proxy is detected, access is restricted unless you log in. The legal basis is Art. 6(1)(f) GDPR — our legitimate interest in protecting the service from automated abuse and scraping.</p>
+
+            <h2>8. Username History</h2>
+            <p>If you are in a Discord server where Disc-Tools is active, the bot may record changes to your username (old and new username, timestamp, and associated server ID). This feature can be disabled by the server owner. You can opt out of having your history publicly accessible via <a href="/profile/settings">Profile Settings → Username History</a>, which prevents anyone from looking up your past usernames. Stored usernames are retained until you request deletion.</p>
+
+            <h2>9. Verification &amp; Alt Detection</h2>
+            <p>When you verify a Discord account through the bot, we store your <strong>Discord user ID, a SHA-256 hash of your IP address, and a verification timestamp</strong>. This data is used to detect alternate accounts (Premium feature). The legal basis is Art. 6(1)(b) GDPR for the verification service, and Art. 6(1)(f) GDPR for abuse detection.</p>
+
+            <h2>10. Premium Subscriptions &amp; Stripe</h2>
+            <p>Premium payments are processed by <strong>Stripe</strong>. When you subscribe, we transmit your Discord user ID to Stripe. Stripe returns a customer ID and subscription ID, which we store. The following data is stored in our database:</p>
+            <ul>
+                <li>Discord user ID</li>
+                <li>Stripe customer and subscription IDs</li>
+                <li>Subscription status (active/inactive)</li>
+                <li>Start and expiry dates</li>
+                <li>Transaction history (type, duration, gift metadata)</li>
+            </ul>
+            <p><strong>Retention:</strong> Payment records are retained for the duration of the subscription plus <strong>3 years after cancellation</strong> (Art. 6(1)(c) GDPR in conjunction with § 147 AO / § 257 HGB — statutory retention obligations under German tax and commercial law). In specific cases, data may be retained for up to <strong>10 years</strong> for tax purposes. Stripe's own privacy policy applies to data they process independently.</p>
+
+            <h2>11. GIF Uploads</h2>
+            <p>When you upload a GIF via the bot, we store your <strong>Discord user ID, the GIF file on our server infrastructure, the original filename, a display name, optional tags, an NSFW flag, file dimensions, file size, view count, and moderation status</strong>. GIFs are publicly accessible by their assigned ID. Prohibited content (including CSAM, extreme violence, hate speech) is removed. We report CSAM to the relevant authorities. For age-restricted (NSFW) content, we require a date of birth for age verification. You may request deletion of your uploaded GIFs at any time by contacting us. The legal basis is Art. 6(1)(b) GDPR — performance of a contract — and Art. 6(1)(c) for legal obligations regarding content moderation.</p>
+
+            <h2>12. Data Sharing</h2>
+            <p>We do not sell, rent, or share your personal data with any third party except as necessary for service operation (see Sections 2, 3, 7, 10). Specifically:</p>
+            <ul>
+                <li><strong>Discord Inc.</strong> — OAuth2 authentication and bot API access</li>
+                <li><strong>Stripe</strong> — payment processing</li>
+                <li><strong>Cloudflare</strong> — CDN, DDoS protection, TLS termination</li>
+                <li><strong>proxycheck.io</strong> — VPN/proxy detection (IP only, not linked to identity)</li>
+                <li><strong>Hetzner</strong> — server hosting infrastructure</li>
+            </ul>
+
+            <h2>13. Your Rights</h2>
+            <p>Under the GDPR, you have the following rights regarding your personal data:</p>
+            <ul>
+                <li><strong>Right of access</strong> (Art. 15 GDPR) — obtain confirmation and a copy of your data</li>
+                <li><strong>Right to rectification</strong> (Art. 16 GDPR) — correct inaccurate data</li>
+                <li><strong>Right to erasure</strong> (Art. 17 GDPR) — request deletion of your data</li>
+                <li><strong>Right to restriction of processing</strong> (Art. 18 GDPR)</li>
+                <li><strong>Right to data portability</strong> (Art. 20 GDPR)</li>
+                <li><strong>Right to object</strong> (Art. 21 GDPR) — object to processing based on legitimate interest</li>
+                <li><strong>Right to withdraw consent</strong> (Art. 7(3) GDPR) — where processing is based on consent</li>
+                <li><strong>Right to lodge a complaint</strong> with a supervisory authority (Art. 77 GDPR)</li>
+            </ul>
+            <p>To exercise any of these rights, email <a href="mailto:info@disc-tools.de">info@disc-tools.de</a> or contact us via the <a href="https://discord.gg/rtRs8rhj5u">Support Server</a>.</p>
+
+            <h2>14. Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time. Significant changes will be announced via our <a href="https://discord.gg/rtRs8rhj5u">Support Server</a>. The current version is always available on this page.</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-brand-row">
+                    <div class="footer-brand-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools"></div>
+                    <span class="footer-brand-name">Disc<span class="accent">-</span>Tools</span>
+                </div>
+                <div class="footer-brand-slogan">Professional Discord Utilities</div>
+            </div>
+            <div class="footer-col">
+                <h3>Product</h3>
+                <a href="/">Dashboard</a>
+                <a href="/invite">Invite Bot</a>
+                <a href="/premium">Premium</a>
+            </div>
+            <div class="footer-col">
+                <h3>Socials</h3>
+                <a href="https://discord.gg/rtRs8rhj5u">Discord</a>
+                <a href="https://disc-tools.de">Website</a>
+                <a href="https://top.gg/bot/1508899864602345582">Top.gg</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <a href="https://discord.gg/rtRs8rhj5u">Support Server</a>
+                <a href="/invite">Invite Bot</a>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <a href="/legal/imprint">Imprint</a>
+                <a href="/legal/privacy-policy">Privacy Policy</a>
+                <a href="/legal/terms-of-service">Terms of Service</a>
+                <a href="/legal/refund-policy">Refund Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; <span id="year"></span> Disc-Tools. All rights reserved.</div>
+    </footer>
+
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-header"><i class="fa-solid fa-cookie cookie-icon"></i><span class="cookie-title">Cookie Consent</span></div>
+        <div class="cookie-text">This site uses cookies for essential functionality and analytics. <a href="/legal/privacy-policy">Learn more</a></div>
+        <div class="cookie-btns">
+            <button class="cookie-btn cookie-btn-ghost" onclick="rejectAll()">Reject all</button>
+            <button class="cookie-btn cookie-btn-secondary" onclick="essentialOnly()">Only essential</button>
+            <button class="cookie-btn cookie-btn-primary" onclick="acceptAll()">Accept all</button>
+        </div>
+    </div>
+
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script src="/static/js/page-init.js"></script>
+</body>
+</html>

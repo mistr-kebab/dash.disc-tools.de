@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Overview – Disc-Tools</title>
+    <meta property="og:title" content="Server Overview – Disc-Tools">
+    <meta property="og:description" content="Manage your Discord server with Disc-Tools.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <link rel="stylesheet" href="/static/css/manage.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+</head>
+<body>
+    <main class="profile-page">
+        <nav class="profile-sidebar" id="profile-sidebar">
+            <div class="profile-sidebar-section">
+                <div class="profile-sidebar-user">
+                    <div class="server-sidebar-icon" id="server-sidebar-icon"><i class="fa-solid fa-server"></i></div>
+                    <div class="profile-sidebar-name">
+                        <strong id="server-sidebar-name">Loading…</strong>
+                        <span id="server-sidebar-id">—</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="profile-sidebar-section">
+                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                    Server
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="profile-sidebar-section-items">
+                    <a href="" class="profile-nav-item active" id="nav-overview" data-panel="overview">
+                        <i class="fa-solid fa-house"></i> <span>Overview</span>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-sidebar-section">
+                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                    Features
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="profile-sidebar-section-items">
+                    <a href="" class="profile-nav-item" id="nav-verification" data-panel="verification">
+                        <i class="fa-solid fa-circle-check"></i> <span>Verification</span>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-sidebar-bottom">
+                <a href="" class="profile-nav-item" id="nav-settings">
+                    <i class="fa-solid fa-gear"></i> <span>Settings</span>
+                </a>
+                <a href="/my-servers" class="profile-nav-item"><i class="fa-solid fa-arrow-left"></i> <span>Back to Servers</span></a>
+            </div>
+        </nav>
+        <div class="profile-panel">
+            <h2><i class="fa-solid fa-house"></i> Overview</h2>
+            <p class="profile-panel-sub" id="server-sub">—</p>
+            <div class="server-stats">
+                <div class="server-stat-card">
+                    <div class="server-stat-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="server-stat-body">
+                        <div class="server-stat-value" id="stat-members">—</div>
+                        <div class="server-stat-label">Members</div>
+                    </div>
+                </div>
+                <div class="server-stat-card">
+                    <div class="server-stat-icon"><i class="fa-solid fa-tag"></i></div>
+                    <div class="server-stat-body">
+                        <div class="server-stat-value" id="stat-roles">—</div>
+                        <div class="server-stat-label">Roles</div>
+                    </div>
+                </div>
+                <div class="server-stat-card">
+                    <div class="server-stat-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="server-stat-body">
+                        <div class="server-stat-value" id="stat-boosts">—</div>
+                        <div class="server-stat-label">Boosts</div>
+                    </div>
+                </div>
+                <div class="server-stat-card">
+                    <div class="server-stat-icon"><i class="fa-solid fa-circle"></i></div>
+                    <div class="server-stat-body">
+                        <div class="server-stat-value" id="stat-online">—</div>
+                        <div class="server-stat-label">Online</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <div class="chart-header">
+                    <h3><i class="fa-solid fa-chart-line"></i> Member Growth</h3>
+                    <div class="chart-toggle">
+                        <button onclick="loadGrowthChart(3)" id="btn-3d">3 days</button>
+                        <button onclick="loadGrowthChart(7)" id="btn-7d" class="active">7 days</button>
+                        <button onclick="loadGrowthChart(30)" id="btn-30d">30 days</button>
+                    </div>
+                </div>
+                    <div class="chart-body">
+                    <div class="chart-area" id="growth-chart-area">
+                        <svg viewBox="0 0 800 360" preserveAspectRatio="none" id="growth-svg"></svg>
+                        <div class="chart-tooltip" id="growth-tooltip" hidden></div>
+                    </div>
+                    <div class="chart-stats-grid">
+                        <div class="chart-stat-item">
+                            <div class="chart-stat-value" id="growth-pct">—</div>
+                            <div class="chart-stat-label">Growth</div>
+                        </div>
+                        <div class="chart-stat-item">
+                            <div class="chart-stat-value" id="growth-change">—</div>
+                            <div class="chart-stat-label">Change</div>
+                        </div>
+                        <div class="chart-stat-item">
+                            <div class="chart-stat-value" id="growth-bots">—</div>
+                            <div class="chart-stat-label">Bots</div>
+                        </div>
+                        <div class="chart-stat-item">
+                            <div class="chart-stat-value" id="growth-peak">—</div>
+                            <div class="chart-stat-label">Peak</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script src="/static/js/server-overview.js"></script>
+</body>
+</html>

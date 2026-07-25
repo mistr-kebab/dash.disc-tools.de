@@ -1,0 +1,99 @@
+.blocked-card-icon i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    font-size: 1.6rem;
+    margin: 0 auto 1.5rem;
+}
+
+.vpn-details {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    text-align: left;
+    overflow: hidden;
+}
+
+.vpn-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.vpn-row:last-child {
+    border-bottom: none;
+}
+
+.vpn-label {
+    color: #71717a;
+}
+
+.vpn-value {
+    color: #e74c3c;
+    font-family: monospace;
+    font-weight: 700;
+}
+
+.blocked-btn {
+    display: block;
+    width: 100%;
+    padding: 0.65rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    background: #e74c3c;
+    color: #fff;
+    font-family: inherit;
+    text-align: center;
+    transition: background 0.15s, transform 0.1s;
+    box-sizing: border-box;
+}
+.blocked-btn:hover {
+    background: #c0392b;
+    transform: translateY(-1px);
+}
+
+.blocked-btn-discord {
+    background: #5865f2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+.blocked-btn-discord:hover {
+    background: #4752c4;
+}
+
+.blocked-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    color: #52525b;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.blocked-divider::before,
+.blocked-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #2a2a2e;
+}
+
+.blocked-note {
+    font-size: 0.75rem;
+    color: #52525b;
+    margin-top: 1rem;
+}
