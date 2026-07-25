@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: HTML Lint
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: .
+          css: false
+          format: gnu
+          ignore: 'Trailing slash on void elements'
+        continue-on-error: true
+
+      - name: CSS Lint
+        run: |
+          npm init -y > /dev/null 2>&1
+          npm install --no-save stylelint stylelint-config-standard > /dev/null 2>&1 || true
+          echo '{"extends":"stylelint-config-standard","rules":{"no-descending-specificity":null,"color-function-notation":"legacy","alpha-value-notation":"number","import-notation":null,"selector-class-pattern":null,"keyframes-name-pattern":null,"no-duplicate-selectors":null}}' > .stylelintrc.json
+          npx stylelint "static/css/**/*.css" --fix 2>&1 || true
+          rm -f .stylelintrc.json package.json package-lock.json
+        continue-on-error: true
+
+      - name: JS Syntax Check
+        run: |
+          for f in static/js/*.js; do
+            node -c "$f" 2>&1 || echo "::warning file=$f::Syntax error in $f"
+          done
+
+      - name: Validate Links
+        run: |
+          grep -roPh 'href="(https?://[^"]+)"' . --include="*.html" | cut -d'"' -f2 | sort -u | \
+          while read url; do
+            status=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 10 "$url" 2>/dev/null || echo "error")
+            if [ "$status" != "200" ] && [ "$status" != "301" ] && [ "$status" != "302" ]; then
+              echo "::warning::Broken external link: $url (HTTP $status)"
+            fi
+          done
+        continue-on-error: true
