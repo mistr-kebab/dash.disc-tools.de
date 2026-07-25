@@ -13,7 +13,7 @@ Only the latest version on the `main` branch is supported with security updates.
 **Do not open a public issue.** Instead, report vulnerabilities privately:
 
 - Discord: Join our [support server](https://discord.gg/rtRs8rhj5u) and DM an admin
-- Email: contact@disc-tools.de
+- Email: info@disc-tools.de
 
 You can expect:
 - Acknowledgment within 48 hours
