@@ -48,7 +48,11 @@ Web dashboard for the [Disc-Tools](https://disc-tools.de) Discord bot — manage
 ├── blocked/                 # Access-denied pages
 ├── legal/                   # Imprint, privacy, terms, refund policy
 ├── success/                 # Post-action confirmation pages
-└── static/                  # Assets (CSS, JS, fonts, icons, images)
+├── static/                  # Assets (CSS, JS, fonts, icons, images)
+├── .github/workflows/       # CI/CD pipeline
+├── .env.example             # Environment variable template
+├── CONTRIBUTING.md          # Contribution guidelines
+└── LICENSE                  # MIT license
 ```
 
 ## Commands (Disc-Tools Bot)
