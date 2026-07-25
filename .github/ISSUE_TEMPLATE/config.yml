@@ -1,0 +1,10 @@
+---
+name: Config
+about: Edit the issue template configuration
+---
+
+blank_issues_enabled: true
+contact_links:
+  - name: Discord Support
+    url: https://discord.gg/rtRs8rhj5u
+    about: Ask questions in our Discord server
