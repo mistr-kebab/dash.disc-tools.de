@@ -4,17 +4,59 @@ document.addEventListener('DOMContentLoaded', function () {
         yearEl.textContent = new Date().getFullYear();
     }
 
+    var statTargets = {};
+    var statsAnimated = false;
+
+    function animateCount(el, target, duration) {
+        var startTime = null;
+        function step(ts) {
+            if (!startTime) startTime = ts;
+            var p = Math.min((ts - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.floor(eased * target).toLocaleString();
+            if (p < 1) {
+                requestAnimationFrame(step);
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    function runStatsAnimation() {
+        if (statsAnimated) return;
+        statsAnimated = true;
+        var dur = 1600;
+        var s = document.getElementById('lp-stat-servers');
+        var c = document.getElementById('lp-stat-community');
+        var u = document.getElementById('lp-stat-users');
+        var p = document.getElementById('lp-stat-premium');
+        if (s && statTargets.servers !== undefined) animateCount(s, statTargets.servers, dur);
+        if (c && statTargets.community !== undefined) animateCount(c, statTargets.community, dur);
+        if (u && statTargets.users !== undefined) animateCount(u, statTargets.users, dur);
+        if (p && statTargets.premium !== undefined) animateCount(p, statTargets.premium, dur);
+    }
+
     fetch('/api/stats')
         .then(function(r) { return r.json(); })
         .then(function(data) {
-            var s = document.getElementById('lp-stat-servers');
-            var c = document.getElementById('lp-stat-community');
-            var u = document.getElementById('lp-stat-users');
-            var p = document.getElementById('lp-stat-premium');
-            if (s) s.textContent = (data.servers || 0).toLocaleString();
-            if (c) c.textContent = (data.communityMembers || 0).toLocaleString();
-            if (u) u.textContent = (data.totalUsers || 0).toLocaleString();
-            if (p) p.textContent = (data.premiumUsers || 0).toLocaleString();
+            statTargets.servers = data.servers || 0;
+            statTargets.community = data.communityMembers || 0;
+            statTargets.users = data.totalUsers || 0;
+            statTargets.premium = data.premiumUsers || 0;
+
+            var statsSection = document.querySelector('.lp-stats');
+            if (statsSection) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            runStatsAnimation();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                observer.observe(statsSection);
+            } else {
+                runStatsAnimation();
+            }
         })
         .catch(function() {});
 

@@ -3,11 +3,12 @@
         '<header>' +
             '<div class="header-inner">' +
                 '<a href="/" class="header-left link-reset">' +
-                    '<div class="header-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools"></div>' +
+                    '<div class="header-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools" width="32" height="32"></div>' +
                     '<span class="header-title">Disc<span class="accent">-</span>Tools</span>' +
                 '</a>' +
                 '<nav class="header-nav">' +
                     '<a href="/" class="nav-link" data-nav="home">Dashboard</a>' +
+                    '<a href="/tools" class="nav-link" data-nav="tools">Tools</a>' +
                     '<a href="/premium" class="nav-link" data-nav="premium">Premium</a>' +
                     '<a href="/stats" class="nav-link" data-nav="stats">Stats</a>' +
                 '</nav>' +
@@ -24,7 +25,7 @@
             '<div class="footer-inner">' +
                 '<div class="footer-brand">' +
                     '<div class="footer-brand-row">' +
-                        '<div class="footer-brand-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools"></div>' +
+                        '<div class="footer-brand-logo"><img src="/static/assets/img/icon.png" alt="Disc-Tools" width="32" height="32"></div>' +
                         '<span class="footer-brand-name">Disc<span class="accent">-</span>Tools</span>' +
                     '</div>' +
                     '<div class="footer-brand-slogan">Professional Discord Utilities</div>' +
@@ -33,6 +34,7 @@
                     '<h3>Product</h3>' +
                     '<a href="/">Dashboard</a>' +
                     '<a href="/invite">Invite Bot</a>' +
+                    '<a href="/tools">Tools</a>' +
                     '<a href="/premium">Premium</a>' +
                 '</div>' +
                 '<div class="footer-col">' +

@@ -1,5 +1,11 @@
 # Disc-Tools Dashboard
 
+[![Dashboard](https://img.shields.io/badge/Dashboard-dash.disc--tools.de-5865f2?style=flat-square&logo=discord)](https://dash.disc-tools.de)
+[![Website](https://img.shields.io/badge/Website-disc--tools.de-5865f2?style=flat-square)](https://disc-tools.de)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865f2?style=flat-square&logo=discord)](https://discord.gg/rtRs8rhj5u)
+[![Top.gg](https://img.shields.io/badge/Top.gg-Vote%20for%20us-5865f2?style=flat-square)](https://top.gg/bot/1508899864602345582)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](./LICENSE)
+
 Web dashboard for the [Disc-Tools](https://disc-tools.de) Discord bot — manage servers, configure verification, handle Premium subscriptions, and more.
 
 ## Features
@@ -59,16 +65,20 @@ Web dashboard for the [Disc-Tools](https://disc-tools.de) Discord bot — manage
 
 | Command | Description |
 |---------|-------------|
-| `/quote` | Generate animated quote GIF |
-| `/username-history` | View username change history |
 | `/avatar` | Get avatar CDN URLs |
 | `/banner` | Get banner CDN URLs |
-| `/timestamp` | Convert date/time to Discord formats |
-| `/color` | Hex to RGB/HSL conversion |
+| `/color` | Hex to RGB/HSL color conversion |
+| `/embed` | Create & preview rich message embeds |
+| `/emoji` | Extract & download custom emojis/stickers |
 | `/invite-lookup` | Look up Discord invite details |
+| `/markdown` | Generate formatted Discord messages |
+| `/nitro-check` | Verify Nitro gift link validity |
 | `/server-lookup` | Look up public server info |
+| `/snowflake` | Decode Discord IDs to timestamps |
+| `/timestamp` | Convert date/time to Discord formats |
+| `/webhook` | Create, send & manage webhook messages |
+| `/quote` | Generate animated quote GIF |
 | `/alt` | Alt account detection (Premium) |
-| `/verify` | Server verification flow |
 
 ## Environment Variables (Backend)
 
@@ -86,8 +96,12 @@ Web dashboard for the [Disc-Tools](https://disc-tools.de) Discord bot — manage
 
 - [Website](https://disc-tools.de)
 - [Dashboard](https://dash.disc-tools.de)
+- [All Tools](https://dash.disc-tools.de/tools)
+- [Premium](https://dash.disc-tools.de/premium)
+- [Statistics](https://dash.disc-tools.de/stats)
 - [Support Discord](https://discord.gg/rtRs8rhj5u)
 - [Top.gg](https://top.gg/bot/1508899864602345582)
+- [GitHub](https://github.com/DiscTools)
 
 ## License
 

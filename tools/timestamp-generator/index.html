@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Timestamp Generator — Date to Discord Format | Disc-Tools</title>
+    <meta name="description" content="Free Discord timestamp generator — convert any date into Discord's dynamic timestamp format. Generate relative, short, and long timestamps that display in each user's local timezone.">
+    <meta property="og:title" content="Discord Timestamp Generator — Free Date Converter | Disc-Tools">
+    <meta property="og:description" content="Convert any date into Discord's dynamic timestamp format. Generate relative, short, and long timestamps that display in each user's local timezone.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/og/timestamp-generator.png">
+    <meta name="twitter:image" content="https://dash.disc-tools.de/static/assets/img/og/timestamp-generator.png">
+    <meta property="og:url" content="https://dash.disc-tools.de/tools/timestamp-generator/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://dash.disc-tools.de/tools/timestamp-generator/">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/tools.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Disc-Tools Timestamp Generator",
+        "url": "https://dash.disc-tools.de/tools/timestamp-generator",
+        "description": "Convert any date and time into Discord's dynamic timestamp format for relative, short, and long display styles.",
+        "applicationCategory": "Utilities",
+        "operatingSystem": "Web",
+        "isAccessibleForFree": true,
+        "author": {
+            "@type": "Organization",
+            "name": "Disc-Tools"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dash.disc-tools.de"},
+            {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://dash.disc-tools.de/tools"},
+            {"@type": "ListItem", "position": 3, "name": "Timestamp Generator", "item": "https://dash.disc-tools.de/tools/timestamp-generator"}
+        ]
+    }
+    </script>
+</head>
+<body>
+    <template-header data-page="home"></template-header>
+
+    <nav class="breadcrumb">
+        <a href="/">Home</a> <span class="sep">/</span>
+        <a href="/tools">Tools</a> <span class="sep">/</span>
+        Timestamp Generator
+    </nav>
+
+    <section class="tools-hero">
+        <h1>Discord <span class="accent">Timestamp Generator</span></h1>
+        <p class="lead">Convert any date into Discord's dynamic timestamp format. Generate relative, short, and long timestamps that automatically display in each user's local timezone.</p>
+        <div class="cta-row">
+            <a href="/invite" class="btn-accent"><i class="fa-solid fa-plus"></i> Add Bot to Server</a>
+        </div>
+    </section>
+
+    <main class="tools-main">
+        <section>
+            <h2><i class="fa-solid fa-circle-info"></i> What is the Timestamp Generator?</h2>
+            <p>Discord supports a special timestamp syntax that renders dates dynamically based on each user's local timezone. Rather than writing a fixed date that may confuse users in different regions, you can use Discord timestamps that say "in 30 minutes," "yesterday at 3:00 PM," or "January 1, 2025" — all automatically adjusted per viewer.</p>
+            <p>The Timestamp Generator takes a human-readable date (like "next Friday at 6 PM") or a Unix timestamp and converts it into all available Discord display formats: relative time, short date, short date with time, long date, long date with time, and short time only. You can copy-paste the output directly into any Discord message.</p>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-bolt"></i> Use Cases</h2>
+            <ul>
+                <li><strong>Event Scheduling</strong> — Announce server events with timestamps that show correctly for members across all timezones</li>
+                <li><strong>Countdowns</strong> — Create dynamic countdowns for product launches, stream starts, or community deadlines</li>
+                <li><strong>Giveaway End Times</strong> — Set clear, universally correct end times for server giveaways and contests</li>
+                <li><strong>Bot Messages</strong> — Use timestamps in custom bot embeds and webhook messages for professional-looking output</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-terminal"></i> How to Use</h2>
+            <p>Invite the Disc-Tools bot to your server and run:</p>
+            <div class="command-box">
+                <span class="slash">/timestamp</span> date: "2025-12-25 18:00" style: long
+            </div>
+            <p>Enter a date in natural language (the bot parses phrases like "tomorrow 8pm," "next Saturday at noon," or "in 2 hours") or as a UTC ISO date. Choose from six display styles: relative, short date, short date/time, long date, long date/time, or time only. Copy the generated code block into your Discord message — it will render dynamically for everyone who sees it.</p>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-link"></i> Related Tools</h2>
+            <div class="related-tools">
+                <a href="/tools/snowflake-decoder"><i class="fa-solid fa-snowflake"></i> Snowflake Decoder</a>
+                <a href="/tools/embed-builder"><i class="fa-solid fa-code"></i> Embed Builder</a>
+                <a href="/tools/webhook-manager"><i class="fa-solid fa-plug"></i> Webhook Manager</a>
+            </div>
+        </section>
+    </main>
+
+    <template-footer></template-footer>
+
+    <script src="/static/js/components.js"></script>
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script defer src="https://umami.disc-tools.de/script.js" data-website-id="71c24f0f-5dfe-41b7-a2ba-0585cba7946c"></script>
+</body>
+</html>

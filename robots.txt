@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /manage/
+Disallow: /profile/
+Disallow: /my-servers
+Disallow: /blocked/
+Disallow: /success/
+Disallow: /404
+Disallow: /api/
+
+Sitemap: https://dash.disc-tools.de/sitemap.xml

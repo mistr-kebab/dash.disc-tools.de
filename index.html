@@ -3,17 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disc-Tools Dashboard</title>
-    <meta name="description" content="Invite Disc-Tools, manage your Discord servers, and handle Premium from one place.">
-    <meta property="og:title" content="Disc-Tools">
-    <meta property="og:description" content="Professional Discord Utilities — alt account detection, quote GIFs, and more.">
-    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
+    <title>Disc-Tools – Free Discord Tools &amp; Server Dashboard</title>
+    <meta name="description" content="Disc-Tools offers 11 free open-source Discord tools — Avatar CDN, Snowflake Decoder, Embed Builder, Invite Lookup, and more. Manage servers, handle Premium, and grow your community.">
+    <meta property="og:title" content="Disc-Tools – Free Discord Tools &amp; Server Dashboard">
+    <meta property="og:description" content="11 free open-source Discord utilities — avatar CDN, snowflake decoder, timestamp generator, embed builder, and more. Manage servers and Premium from one dashboard.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/og/home.png">
+    <meta name="twitter:image" content="https://dash.disc-tools.de/static/assets/img/og/home.png">
+    <meta property="og:url" content="https://dash.disc-tools.de">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://dash.disc-tools.de">
+    <link rel="preconnect" href="https://umami.disc-tools.de">
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="stylesheet" href="/static/css/landing.css">
     <link rel="stylesheet" href="/static/icons/css/all.min.css">
     <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Disc-Tools",
+        "url": "https://dash.disc-tools.de",
+        "description": "Free open-source Discord utilities — 11 tools for avatars, embeds, lookups, timestamps, and more.",
+        "sameAs": [
+            "https://github.com/DiscTools",
+            "https://top.gg/bot/1508899864602345582",
+            "https://disc-tools.de",
+            "https://discord.gg/rtRs8rhj5u"
+        ],
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://dash.disc-tools.de/tools?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://dash.disc-tools.de"
+            }
+        ]
+    }
+    </script>
 </head>
 <body class="page-landing">
     <template-header data-page="home"></template-header>
@@ -27,7 +65,7 @@
         <div class="lp-wide lp-hero-body">
             <div class="lp-hero-copy">
                 <h1>Disc<span class="accent">-</span>Tools</h1>
-                <p class="lp-hero-lead">Discord utilities for your server — quote GIFs, lookups, user history, and alt detection. This dashboard handles invites, server overview, and Premium.</p>
+                <p class="lp-hero-lead">Discord utilities for your server — 11 free tools including quote GIFs, lookups, user history, and alt detection. Manage invites, servers, and Premium from one dashboard.</p>
                 <div class="lp-hero-actions" id="hero-actions">
                     <a href="/invite" class="lp-btn lp-btn-primary"><i class="fa-solid fa-plus"></i> Add to Server</a>
                     <a href="https://discord.gg/rtRs8rhj5u" class="lp-btn lp-btn-ghost"><i class="fa-brands fa-discord"></i> Support</a>
@@ -68,6 +106,11 @@
                     <p>What Disc-Tools does on your server</p>
                 </header>
                 <div class="lp-feature-grid">
+                    <article class="lp-feature">
+                        <span class="lp-feature-icon"><i class="fa-solid fa-grid-2"></i></span>
+                        <h3>11 Free Tools</h3>
+                        <p>Avatar CDN, Snowflake Decoder, Embed Builder, Timestamp Generator, and more — all usable via slash commands.</p>
+                    </article>
                     <article class="lp-feature">
                         <span class="lp-feature-icon"><i class="fa-solid fa-image"></i></span>
                         <h3>Quote GIFs</h3>
@@ -157,6 +200,8 @@
             <nav class="lp-links" aria-label="Quick links">
                 <a href="/invite">Invite bot</a>
                 <span>·</span>
+                <a href="/tools">All Tools</a>
+                <span>·</span>
                 <a href="https://top.gg/bot/1508899864602345582">Top.gg</a>
                 <span>·</span>
                 <a href="https://disc-tools.de">Website</a>
@@ -186,9 +231,9 @@
     </div>
 
     <script src="/static/js/components.js"></script>
-    <script src="/static/js/cookie-banner.js?v=2"></script>
-    <script src="/static/js/auth.js?v=2"></script>
-    <script src="/static/js/landing.js"></script>
+    <script defer src="/static/js/cookie-banner.js?v=2"></script>
+    <script defer src="/static/js/auth.js?v=2"></script>
+    <script defer src="/static/js/landing.js"></script>
     <script defer src="https://umami.disc-tools.de/script.js" data-website-id="71c24f0f-5dfe-41b7-a2ba-0585cba7946c"></script>
 </body>
 </html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Server Lookup — View Guild Info &amp; Statistics | Disc-Tools</title>
+    <meta name="description" content="Free Discord server lookup — view detailed guild information, member count, owner, boosts, channels, roles, vanity URL, and banner of any public Discord server.">
+    <meta property="og:title" content="Discord Server Lookup — Free Guild Info Tool | Disc-Tools">
+    <meta property="og:description" content="Look up detailed information about any public Discord server: member count, owner, boosts, channels, vanity URL, and banner.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/og/server-lookup.png">
+    <meta name="twitter:image" content="https://dash.disc-tools.de/static/assets/img/og/server-lookup.png">
+    <meta property="og:url" content="https://dash.disc-tools.de/tools/server-lookup/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://dash.disc-tools.de/tools/server-lookup/">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/tools.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Disc-Tools Server Lookup",
+        "url": "https://dash.disc-tools.de/tools/server-lookup",
+        "description": "Look up detailed information about any public Discord server including member count, owner, boosts, channels, and banners.",
+        "applicationCategory": "Utilities",
+        "operatingSystem": "Web",
+        "isAccessibleForFree": true,
+        "author": {
+            "@type": "Organization",
+            "name": "Disc-Tools"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dash.disc-tools.de"},
+            {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://dash.disc-tools.de/tools"},
+            {"@type": "ListItem", "position": 3, "name": "Server Lookup", "item": "https://dash.disc-tools.de/tools/server-lookup"}
+        ]
+    }
+    </script>
+</head>
+<body>
+    <template-header data-page="home"></template-header>
+
+    <nav class="breadcrumb">
+        <a href="/">Home</a> <span class="sep">/</span>
+        <a href="/tools">Tools</a> <span class="sep">/</span>
+        Server Lookup
+    </nav>
+
+    <section class="tools-hero">
+        <h1>Discord <span class="accent">Server Lookup</span></h1>
+        <p class="lead">Look up detailed information about any public Discord server — member count, owner, boost level, channels, roles, vanity URL, banner, and more from a single slash command.</p>
+        <div class="cta-row">
+            <a href="/invite" class="btn-accent"><i class="fa-solid fa-plus"></i> Add Bot to Server</a>
+        </div>
+    </section>
+
+    <main class="tools-main">
+        <section>
+            <h2><i class="fa-solid fa-circle-info"></i> What is the Server Lookup?</h2>
+            <p>The Server Lookup tool retrieves comprehensive information about any public Discord guild using its server ID. You get the server name, icon, banner, owner, member count, boost tier and count, channel and role counts, vanity URL code, description, verification level, and creation date. All of this is displayed in a clean, organized embed right in your Discord channel.</p>
+            <p>This tool is invaluable for server admins researching other communities, moderators investigating report claims, and users curious about a server's size and activity level. The lookup only works for servers the bot shares with you, or for public servers indexed by Discord's API — private server data is never exposed.</p>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-bolt"></i> Use Cases</h2>
+            <ul>
+                <li><strong>Server Research</strong> — Check a server's size and activity before joining or partnering</li>
+                <li><strong>Moderation</strong> — Investigate server IDs reported by your community members</li>
+                <li><strong>Growth Tracking</strong> — Monitor your own server's growth metrics over time using repeated lookups</li>
+                <li><strong>Partner Vetting</strong> — Verify a partner server's member count and boost level before agreeing to cross-promotion</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-terminal"></i> How to Use</h2>
+            <p>Invite the Disc-Tools bot to your server and run:</p>
+            <div class="command-box">
+                <span class="slash">/server-lookup</span> guild_id: 123456789012345678
+            </div>
+            <p>Enter a Discord server ID (18-19 digit number). You can get any server's ID by enabling Developer Mode in Discord settings and right-clicking the server icon. The bot returns a rich embed with all available server information including creation date, boost status, vanity URL details, and system channel configuration.</p>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-link"></i> Related Tools</h2>
+            <div class="related-tools">
+                <a href="/tools/invite-lookup"><i class="fa-solid fa-link"></i> Invite Lookup</a>
+                <a href="/tools/snowflake-decoder"><i class="fa-solid fa-snowflake"></i> Snowflake Decoder</a>
+                <a href="/tools/timestamp-generator"><i class="fa-solid fa-clock"></i> Timestamp Generator</a>
+                <a href="/tools/avatar-cdn"><i class="fa-solid fa-image"></i> Avatar CDN</a>
+            </div>
+        </section>
+    </main>
+
+    <template-footer></template-footer>
+
+    <script src="/static/js/components.js"></script>
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script defer src="https://umami.disc-tools.de/script.js" data-website-id="71c24f0f-5dfe-41b7-a2ba-0585cba7946c"></script>
+</body>
+</html>

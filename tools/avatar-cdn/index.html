@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Avatar CDN — Get Avatar URLs &amp; Banners | Disc-Tools</title>
+    <meta name="description" content="Free Discord Avatar CDN tool — retrieve and download any Discord user's avatar, banner, and server icon in all available sizes (16 to 4096px) and formats (PNG, JPEG, WebP, GIF).">
+    <meta property="og:title" content="Discord Avatar CDN — Free Avatar URL Tool | Disc-Tools">
+    <meta property="og:description" content="Retrieve any Discord user's avatar, banner, or server icon with a single slash command. Multiple sizes and formats available.">
+    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/og/avatar-cdn.png">
+    <meta name="twitter:image" content="https://dash.disc-tools.de/static/assets/img/og/avatar-cdn.png">
+    <meta property="og:url" content="https://dash.disc-tools.de/tools/avatar-cdn/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://dash.disc-tools.de/tools/avatar-cdn/">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/tools.css">
+    <link rel="stylesheet" href="/static/icons/css/all.min.css">
+    <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Disc-Tools Avatar CDN",
+        "url": "https://dash.disc-tools.de/tools/avatar-cdn",
+        "description": "Retrieve and download Discord user avatars, server icons, and banners in multiple sizes and formats.",
+        "applicationCategory": "Utilities",
+        "operatingSystem": "Web",
+        "isAccessibleForFree": true,
+        "author": {
+            "@type": "Organization",
+            "name": "Disc-Tools"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dash.disc-tools.de"},
+            {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://dash.disc-tools.de/tools"},
+            {"@type": "ListItem", "position": 3, "name": "Avatar CDN", "item": "https://dash.disc-tools.de/tools/avatar-cdn"}
+        ]
+    }
+    </script>
+</head>
+<body>
+    <template-header data-page="home"></template-header>
+
+    <nav class="breadcrumb">
+        <a href="/">Home</a> <span class="sep">/</span>
+        <a href="/tools">Tools</a> <span class="sep">/</span>
+        Avatar CDN
+    </nav>
+
+    <section class="tools-hero">
+        <h1>Discord <span class="accent">Avatar CDN</span></h1>
+        <p class="lead">Get any Discord user's avatar, server icon, or banner URL — download the image in every available size and format with a single slash command.</p>
+        <div class="cta-row">
+            <a href="/invite" class="btn-accent"><i class="fa-solid fa-plus"></i> Add Bot to Server</a>
+        </div>
+    </section>
+
+    <main class="tools-main">
+        <section>
+            <h2><i class="fa-solid fa-circle-info"></i> What is the Avatar CDN?</h2>
+            <p>Discord stores user avatars, server icons, and banners on its content delivery network (CDN). The Avatar CDN tool extracts these URLs so you can download, share, or use them outside of Discord. Every Discord user and server has a unique hash that determines their avatar URL, and this tool retrieves it instantly.</p>
+            <p>Whether you need a friend's profile picture in high resolution, want to save a server icon for reference, or need to verify avatar changes over time, the Avatar CDN has you covered. It supports all standard image formats including animated GIFs.</p>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-bolt"></i> Use Cases</h2>
+            <ul>
+                <li><strong>Profile Archives</strong> — Save avatars of community members who've left your server</li>
+                <li><strong>Design References</strong> — Use server icons and banners as inspiration for your own branding</li>
+                <li><strong>Moderation</strong> — Document inappropriate avatars with links to the exact CDN file</li>
+                <li><strong>Bot Development</strong> — Quickly verify avatar hashes and format URLs for your own Discord bots</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-terminal"></i> How to Use</h2>
+            <p>Invite the Disc-Tools bot to your server and run the slash command:</p>
+            <div class="command-box">
+                <span class="slash">/avatar</span> user: &lt;@user&gt;
+            </div>
+            <p>You can pass a user mention for someone's profile picture, a guild ID for a server icon, or a user ID for global profile data including banners. The bot returns direct CDN links in multiple resolutions (16px to 4096px) in PNG, JPEG, WebP, and GIF formats.</p>
+        </section>
+
+        <section>
+            <h2><i class="fa-solid fa-link"></i> Related Tools</h2>
+            <div class="related-tools">
+                <a href="/tools/server-lookup"><i class="fa-solid fa-server"></i> Server Lookup</a>
+                <a href="/tools/invite-lookup"><i class="fa-solid fa-link"></i> Invite Lookup</a>
+                <a href="/tools/snowflake-decoder"><i class="fa-solid fa-snowflake"></i> Snowflake Decoder</a>
+            </div>
+        </section>
+    </main>
+
+    <template-footer></template-footer>
+
+    <script src="/static/js/components.js"></script>
+    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/auth.js?v=2"></script>
+    <script defer src="https://umami.disc-tools.de/script.js" data-website-id="71c24f0f-5dfe-41b7-a2ba-0585cba7946c"></script>
+</body>
+</html>
