@@ -1,5 +1,5 @@
 .invite-container {
-    max-width: 680px;
+    max-width: 860px;
     margin: 3rem auto;
     padding: 0 1.5rem;
 }
@@ -54,7 +54,7 @@
 }
 
 .server-section {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
 }
 
 .server-section:last-child {
@@ -73,46 +73,54 @@
     gap: 0.5rem;
 }
 
-.server-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.6rem 0.75rem;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.02);
-    margin-bottom: 0.35rem;
-    gap: 0.75rem;
+.server-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.55rem;
 }
 
-.server-row:last-child {
-    margin-bottom: 0;
+.server-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.1rem 0.75rem 0.9rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+    gap: 0.45rem;
+    transition: background 0.15s;
+}
+
+.server-row:hover {
+    background: rgba(255,255,255,0.04);
 }
 
 .server-row-left {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.4rem;
     min-width: 0;
-    flex: 1;
+    width: 100%;
 }
 
 .server-icon-img {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     flex-shrink: 0;
     object-fit: cover;
 }
 
 .server-icon-text {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: #2a2a2e;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: #71717a;
     flex-shrink: 0;
@@ -120,12 +128,13 @@
 }
 
 .server-name {
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     font-weight: 600;
     color: #e1e1e6;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .server-badge {
@@ -144,10 +153,11 @@
 .btn-invite {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.4rem;
     padding: 0.45rem 0.85rem;
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     text-decoration: none;
     background: #5865F2;
@@ -155,6 +165,8 @@
     white-space: nowrap;
     flex-shrink: 0;
     transition: background 0.15s;
+    width: 100%;
+    margin-top: 0.15rem;
 }
 
 .btn-invite:hover {
@@ -162,14 +174,17 @@
 }
 
 .server-added {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
     color: #2ecc71;
     white-space: nowrap;
     flex-shrink: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.3rem;
+    width: 100%;
+    margin-top: 0.15rem;
 }
 
 .invite-empty {
@@ -195,16 +210,20 @@
     color: #3a3a3e;
 }
 
+@media (max-width: 650px) {
+    .server-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 500px) {
     .invite-card {
         padding: 1.5rem 1rem;
     }
-    .server-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+    .server-grid {
+        grid-template-columns: 1fr;
     }
-    .btn-invite, .server-added {
-        align-self: flex-start;
+    .server-row {
+        padding: 0.85rem 0.75rem;
     }
 }

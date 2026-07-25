@@ -32,7 +32,7 @@ function renderServers(data) {
     var html = '';
 
     if (otherServers.length > 0) {
-        html += '<div class="server-section"><h3 class="server-section-title"><i class="fa-solid fa-circle-plus"></i> Available to invite</h3>';
+        html += '<div class="server-section"><h3 class="server-section-title"><i class="fa-solid fa-circle-plus"></i> Available to invite</h3><div class="server-grid">';
         otherServers.forEach(function(s) {
             html += '<div class="server-row">' +
                 '<div class="server-row-left">' +
@@ -45,11 +45,11 @@ function renderServers(data) {
                 '</a>' +
             '</div>';
         });
-        html += '</div>';
+        html += '</div></div>';
     }
 
     if (botServers.length > 0) {
-        html += '<div class="server-section"><h3 class="server-section-title"><i class="fa-solid fa-circle-check"></i> Bot already added</h3>';
+        html += '<div class="server-section"><h3 class="server-section-title"><i class="fa-solid fa-circle-check"></i> Bot already added</h3><div class="server-grid">';
         botServers.forEach(function(s) {
             html += '<div class="server-row">' +
                 '<div class="server-row-left">' +
@@ -60,7 +60,7 @@ function renderServers(data) {
                 '<span class="server-added"><i class="fa-solid fa-check"></i> Added</span>' +
             '</div>';
         });
-        html += '</div>';
+        html += '</div></div>';
     }
 
     if (total === 0) {
