@@ -64,11 +64,11 @@
             <div class="settings-card">
                 <div class="setting-row">
                     <div class="setting-info">
-                        <div class="setting-label">Audit Log Channel</div>
+                        <label class="setting-label" for="setting-log-channel">Audit Log Channel</label>
                         <div class="setting-desc">Channel where the bot logs when dashboard settings are changed.</div>
                     </div>
                     <div class="setting-control">
-                        <select id="setting-log-category">
+                        <select id="setting-log-category" aria-label="Filter by category">
                             <option value="">All Categories</option>
                         </select>
                         <select id="setting-log-channel">
@@ -76,7 +76,7 @@
                         </select>
                     </div>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="toggle-audit-log">
+                        <input type="checkbox" id="toggle-audit-log" aria-label="Enable audit log">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
