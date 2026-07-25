@@ -30,6 +30,12 @@
                         '<span class="footer-brand-name">Disc<span class="accent">-</span>Tools</span>' +
                     '</div>' +
                     '<div class="footer-brand-slogan">Professional Discord Utilities</div>' +
+                    '<div class="footer-social">' +
+                        '<a href="https://github.com/DiscTools" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>' +
+                        '<a href="https://discord.gg/rtRs8rhj5u" target="_blank" rel="noopener" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>' +
+                        '<a href="https://www.instagram.com/disc.tools" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>' +
+                        '<a href="https://www.tiktok.com/@disc.tools" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>' +
+                    '</div>' +
                 '</div>' +
                 '<div class="footer-col">' +
                     '<h3>Product</h3>' +

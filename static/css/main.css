@@ -274,6 +274,30 @@ p { color: #a1a1aa; line-height: 1.6; margin-bottom: 1.5rem; }
     line-height: 1.4;
 }
 
+.footer-social {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.85rem;
+}
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(155, 89, 182, 0.08);
+    color: #9b59b6;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.footer-social a:hover {
+    background: rgba(155, 89, 182, 0.18);
+    color: #c77dff;
+    transform: translateY(-1px);
+}
+
 .footer-bottom {
     text-align: center;
     font-size: 0.75rem;
