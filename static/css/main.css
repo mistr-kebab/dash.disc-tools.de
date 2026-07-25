@@ -283,17 +283,15 @@ p { color: #a1a1aa; line-height: 1.6; margin-bottom: 1.5rem; }
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: rgba(155, 89, 182, 0.08);
-    color: #9b59b6;
-    font-size: 0.9rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    color: #71717a;
+    font-size: 1.15rem;
     text-decoration: none;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
+    transition: color 0.2s, transform 0.2s;
 }
 .footer-social a:hover {
-    background: rgba(155, 89, 182, 0.18);
     color: #c77dff;
     transform: translateY(-1px);
 }
