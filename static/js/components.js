@@ -8,7 +8,7 @@
                 '</a>' +
                 '<nav class="header-nav">' +
                     '<a href="/" class="nav-link" data-nav="home">Dashboard</a>' +
-                    '<a href="/tools" class="nav-link" data-nav="tools">Tools</a>' +
+
                     '<a href="/premium" class="nav-link" data-nav="premium">Premium</a>' +
                     '<a href="/stats" class="nav-link" data-nav="stats">Stats</a>' +
                 '</nav>' +
@@ -34,7 +34,7 @@
                     '<h3>Product</h3>' +
                     '<a href="/">Dashboard</a>' +
                     '<a href="/invite">Invite Bot</a>' +
-                    '<a href="/tools">Tools</a>' +
+
                     '<a href="/premium">Premium</a>' +
                 '</div>' +
                 '<div class="footer-col">' +
