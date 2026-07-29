@@ -9,6 +9,52 @@ document.getElementById('sidebar-toggle').addEventListener('click', function() {
     }
 });
 
+function showProfileToast(msg, isError) {
+    var container = document.querySelector('.profile-toast-stack');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'profile-toast-stack';
+        document.body.appendChild(container);
+    }
+    container.querySelectorAll('.profile-toast').forEach(function(t) { t.classList.add('stale'); });
+    var toast = document.createElement('div');
+    toast.className = 'profile-toast';
+    if (isError) toast.style.color = '#e74c3c';
+    toast.textContent = msg;
+    container.appendChild(toast);
+    setTimeout(function() {
+        if (!toast.matches(':hover')) toast.remove();
+    }, 2900);
+}
+
+window.saveDisplayName = function() {
+    var input = document.getElementById('display-name');
+    var name = input.value.trim();
+    if (!name) {
+        showProfileToast('Display name cannot be empty.', true);
+        return;
+    }
+    fetch('/api/profile/display-name', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ display_name: name })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+        if (data.success) {
+            showProfileToast('Display name updated.');
+            var el = document.getElementById('profile-name');
+            if (el) el.textContent = name;
+        } else {
+            showProfileToast(data.error || 'Failed to save.', true);
+        }
+    })
+    .catch(function() {
+        showProfileToast('Failed to save. Please try again.', true);
+    });
+};
+
 var saveTimer = null;
 function saveSetting() {
     if (saveTimer) clearTimeout(saveTimer);
@@ -32,6 +78,11 @@ function loadOverview(auth) {
     document.getElementById('ov-user-id').textContent = auth.user.id;
     document.getElementById('ov-email').textContent = auth.user.email || 'Not available';
 
+    var displayNameInput = document.getElementById('display-name');
+    if (displayNameInput) {
+        displayNameInput.value = auth.user.global_name || auth.user.username || '';
+    }
+
     try {
         var snowflake = BigInt(auth.user.id);
         var createdAt = new Date(Number((snowflake >> 22n) + 1420070400000n));
@@ -44,7 +95,7 @@ function loadOverview(auth) {
     document.getElementById('ov-email').addEventListener('click', function() {
         copyCount++;
         if (copyCount > 3) {
-            showToast('Enough copied lil bro');
+            showProfileToast('Enough copied lil bro');
             return;
         }
         if (copyCount === 3) {
@@ -53,26 +104,9 @@ function loadOverview(auth) {
         var email = this.textContent;
         if (!email || email === 'Not available') return;
         navigator.clipboard.writeText(email).then(function() {
-            showToast('Copied to clipboard');
+            showProfileToast('Copied to clipboard');
         }).catch(function() {});
     });
-
-    function showToast(msg) {
-        var container = document.querySelector('.profile-toast-stack');
-        if (!container) {
-            container = document.createElement('div');
-            container.className = 'profile-toast-stack';
-            document.body.appendChild(container);
-        }
-        container.querySelectorAll('.profile-toast').forEach(function(t) { t.classList.add('stale'); });
-        var toast = document.createElement('div');
-        toast.className = 'profile-toast';
-        toast.textContent = msg;
-        container.appendChild(toast);
-        setTimeout(function() {
-            if (!toast.matches(':hover')) toast.remove();
-        }, 2900);
-    }
 
     fetch('/api/premium/status/' + auth.user.id, { credentials: 'include' })
         .then(function(r) { return r.json(); })
@@ -162,10 +196,16 @@ function loadSessions() {
                     '<td>' + browser + '</td>' +
                     '<td>' + activeStr + '</td>' +
                     '<td>' + dateStr + '</td>' +
-                    '<td>' + (isCurrent ? '' : '<button class="session-revoke" onclick="revokeSession(' + s.id + ', this)" title="Revoke"><i class="fa-solid fa-xmark"></i></button>') + '</td>' +
+                    '<td>' + (isCurrent ? '' : '<button class="session-revoke" data-session-id="' + s.id + '" title="Revoke"><i class="fa-solid fa-xmark"></i></button>') + '</td>' +
                 '</tr>';
             });
             tbody.innerHTML = html;
+            var btns = tbody.querySelectorAll('.session-revoke');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener('click', function(e) {
+                    revokeSession(this.getAttribute('data-session-id'), this);
+                });
+            }
         })
         .catch(function() {});
 }
