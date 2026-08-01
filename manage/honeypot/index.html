@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Settings – Disc-Tools</title>
-    <meta property="og:title" content="Server Settings – Disc-Tools">
-    <meta property="og:description" content="Configure Disc-Tools for your server.">
+    <title>Honeypot – Disc-Tools</title>
+    <meta property="og:title" content="Honeypot – Disc-Tools">
+    <meta property="og:description" content="Set up a honeypot channel to automatically punish users who send messages.">
     <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
@@ -48,41 +48,73 @@
                     <a href="" class="profile-nav-item" id="nav-verification" data-panel="verification">
                         <i class="fa-solid fa-circle-check"></i> <span>Verification</span>
                     </a>
-                    <a href="" class="profile-nav-item" id="nav-honeypot" data-panel="honeypot">
+                    <a href="" class="profile-nav-item active" id="nav-honeypot" data-panel="honeypot">
                         <i class="fa-solid fa-spider"></i> <span>Honeypot</span>
                     </a>
                 </div>
             </div>
             <div class="profile-sidebar-bottom">
-                <a href="" class="profile-nav-item active" id="nav-settings">
+                <a href="" class="profile-nav-item" id="nav-settings">
                     <i class="fa-solid fa-gear"></i> <span>Settings</span>
                 </a>
                 <a href="/my-servers" class="profile-nav-item"><i class="fa-solid fa-arrow-left"></i> <span>Back to Servers</span></a>
             </div>
         </nav>
         <div class="profile-panel">
-            <h2><i class="fa-solid fa-gear"></i> Settings</h2>
+            <h2><i class="fa-solid fa-spider"></i> Honeypot</h2>
             <p class="profile-panel-sub" id="server-sub">—</p>
 
             <div class="settings-card">
                 <div class="setting-row">
                     <div class="setting-info">
-                        <label class="setting-label" for="setting-log-channel">Audit Log Channel</label>
-                        <div class="setting-desc">Channel where the bot logs when dashboard settings are changed.</div>
+                        <label class="setting-label" for="setting-honeypot-channel">Honeypot Channel</label>
+                        <div class="setting-desc">Select an existing channel or leave empty to let the bot create one automatically.</div>
                     </div>
                     <div class="setting-control">
-                        <select id="setting-log-category" aria-label="Filter by category">
+                        <select id="setting-honeypot-category" aria-label="Filter by category">
                             <option value="">All Categories</option>
                         </select>
-                        <select id="setting-log-channel">
-                            <option value="">— None —</option>
+                        <select id="setting-honeypot-channel">
+                            <option value="">— Auto-create —</option>
                         </select>
                     </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="toggle-audit-log" aria-label="Enable audit log">
-                        <span class="toggle-slider"></span>
-                    </label>
                 </div>
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <label class="setting-label" for="setting-honeypot-penalty">Penalty</label>
+                        <div class="setting-desc">What happens when someone writes in the honeypot channel.</div>
+                    </div>
+                    <div class="setting-control">
+                        <select id="setting-honeypot-penalty">
+                            <option value="">— Disabled —</option>
+                            <option value="kick">Kick</option>
+                            <option value="ban">Ban</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-row" id="row-ban-duration" style="display:none">
+                    <div class="setting-info">
+                        <label class="setting-label" for="setting-ban-duration">Ban Duration</label>
+                        <div class="setting-desc">How long the user stays banned. Leave at 0 for permanent.</div>
+                    </div>
+                    <div class="setting-control">
+                        <select id="setting-ban-duration">
+                            <option value="0">Permanent</option>
+                            <option value="3600">1 Hour</option>
+                            <option value="21600">6 Hours</option>
+                            <option value="43200">12 Hours</option>
+                            <option value="86400">1 Day</option>
+                            <option value="259200">3 Days</option>
+                            <option value="604800">7 Days</option>
+                            <option value="1209600">14 Days</option>
+                            <option value="2592000">30 Days</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="honeypot-info">
+                <p><i class="fa-solid fa-circle-info"></i> When enabled, the bot will monitor the selected channel. Any user who sends a message there will be <strong>immediately</strong> kicked or banned. The message will be deleted automatically.</p>
             </div>
 
             <div class="settings-actions">
@@ -107,7 +139,7 @@
     </main>
     <script src="/static/js/cookie-banner.js?v=2"></script>
     <script src="/static/js/auth.js?v=2"></script>
-    <script src="/static/js/server-settings.js"></script>
+    <script src="/static/js/server-honeypot.js?v=1"></script>
     <script defer src="https://umami.disc-tools.de/script.js" data-website-id="71c24f0f-5dfe-41b7-a2ba-0585cba7946c"></script>
 </body>
 </html>

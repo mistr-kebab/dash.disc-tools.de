@@ -44,6 +44,14 @@ function setComp(id, now, prev) {
 }
 
 function loadLiveStats() {
+    if (window.__STATS_LIVE__) {
+        var data = window.__STATS_LIVE__;
+        document.getElementById('stat-servers').textContent = formatNum(data.servers || 0);
+        document.getElementById('stat-community').textContent = formatNum(data.communityMembers || 0);
+        document.getElementById('stat-total').textContent = formatNum(data.totalUsers || 0);
+        return;
+    }
+
     fetch('/api/stats')
         .then(function(r) { return r.json(); })
         .then(function(data) {
@@ -180,50 +188,65 @@ function drawLineChart(daysData) {
     labels.innerHTML = labelHtml;
 }
 
+function processHistory(data, days) {
+    var existing = data.days || [];
+    var lookup = {};
+    existing.forEach(function(d) {
+        var key = d.date.split('T')[0];
+        lookup[key] = d;
+    });
+
+    var filled = [];
+    var today = new Date();
+    for (var i = days - 1; i >= 0; i--) {
+        var d = new Date(today);
+        d.setDate(d.getDate() - i);
+        var key = d.toISOString().split('T')[0];
+        if (lookup[key]) {
+            filled.push(lookup[key]);
+        } else {
+            filled.push({
+                date: key,
+                servers: 0,
+                community_members: 0,
+                total_users: 0
+            });
+        }
+    }
+
+    drawLineChart(filled);
+
+    if (filled.length >= 2) {
+        var latest = filled[filled.length - 1];
+        var prev = filled[0];
+        setComp('servers', latest.servers, prev.servers);
+        setComp('community', latest.community_members, prev.community_members);
+        setComp('total', latest.total_users, prev.total_users);
+    }
+}
+
 function loadHistory(days) {
     document.getElementById('btn-7d').classList.toggle('active', days === 7);
     document.getElementById('btn-30d').classList.toggle('active', days === 30);
 
+    var embedded;
+    if (days === 7) embedded = window.__STATS_HISTORY_7__;
+    if (days === 30) embedded = window.__STATS_HISTORY_30__;
+
+    if (embedded) {
+        processHistory(embedded, days);
+        return;
+    }
+
     fetch('/api/stats/history?days=' + days)
         .then(function(r) { return r.json(); })
         .then(function(data) {
-            var existing = data.days || [];
-            var lookup = {};
-            existing.forEach(function(d) {
-                var key = d.date.split('T')[0];
-                lookup[key] = d;
-            });
-
-            var filled = [];
-            var today = new Date();
-            for (var i = days - 1; i >= 0; i--) {
-                var d = new Date(today);
-                d.setDate(d.getDate() - i);
-                var key = d.toISOString().split('T')[0];
-                if (lookup[key]) {
-                    filled.push(lookup[key]);
-                } else {
-                    filled.push({
-                        date: key,
-                        servers: 0,
-                        community_members: 0,
-                        total_users: 0
-                    });
-                }
-            }
-
-            drawLineChart(filled);
-
-            if (filled.length >= 2) {
-                var latest = filled[filled.length - 1];
-                var prev = filled[0];
-                setComp('servers', latest.servers, prev.servers);
-                setComp('community', latest.community_members, prev.community_members);
-                setComp('total', latest.total_users, prev.total_users);
-            }
+            processHistory(data, days);
         })
         .catch(function() {});
 }
+
+// Buttons use inline onclick in HTML
 
 loadLiveStats();
 loadHistory(7);

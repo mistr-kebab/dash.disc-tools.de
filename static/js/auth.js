@@ -18,6 +18,9 @@ document.addEventListener('scroll', function() {
 handleScroll();
 
 async function checkAuth() {
+    if (window.__AUTH__) {
+        return window.__AUTH__;
+    }
     try {
         const res = await fetch('/api/auth/me', { credentials: 'include' });
         return await res.json();
@@ -36,12 +39,12 @@ function updateHeader(auth, headerRight) {
             : null;
 
         const avatarHtml = base
-            ? `<picture><source srcset="${base}.gif" type="image/gif"><source srcset="${base}.webp" type="image/webp"><source srcset="${base}.png" type="image/png"><img class="user-avatar" src="${base}.${isAnimated ? 'gif' : 'png'}" alt="${name}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'"></picture>`
+            ? `<picture><source srcset="${base}.gif" type="image/gif"><source srcset="${base}.webp" type="image/webp"><source srcset="${base}.png" type="image/png"><img class="user-avatar" src="${base}.${isAnimated ? 'gif' : 'png'}" alt="${name}"></picture>`
             : '<img class="user-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="">';
 
         headerRight.innerHTML = `
             <div class="user-menu">
-                <button class="user-menu-btn" onclick="toggleMenu(event)">
+                <button class="user-menu-btn">
                     ${avatarHtml}
                     <span class="user-name">${name}</span>
                     <i class="fa-solid fa-caret-down"></i>
@@ -50,10 +53,23 @@ function updateHeader(auth, headerRight) {
                     <a href="/profile"><i class="fa-solid fa-user"></i> Profile</a>
                     <a href="/my-servers"><i class="fa-solid fa-server"></i> My Servers</a>
                     <div class="dropdown-divider"></div>
-                    <button class="logout-btn" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+                    <button class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
                 </div>
             </div>
         `;
+
+        const btn = headerRight.querySelector('.user-menu-btn');
+        btn.addEventListener('click', toggleMenu);
+
+        const logoutBtn = headerRight.querySelector('.logout-btn');
+        logoutBtn.addEventListener('click', logout);
+
+        const avatarImg = headerRight.querySelector('.user-avatar');
+        if (base) {
+            avatarImg.addEventListener('error', function() {
+                this.src = 'https://cdn.discordapp.com/embed/avatars/0.png';
+            }, { once: true });
+        }
     } else {
         headerRight.innerHTML = `
             <a class="btn-discord" href="/api/auth/login">
@@ -78,7 +94,7 @@ function toggleMenu(event) {
 function closeMenu(e) {
     const dd = document.querySelector('.user-dropdown.open');
     const btn = document.querySelector('.user-menu-btn.open');
-    if (dd && !dd.contains(e.target) && !btn.contains(e.target)) {
+    if (dd && !dd.contains(e.target) && btn && !btn.contains(e.target)) {
         dd.classList.remove('open');
         btn.classList.remove('open');
     }

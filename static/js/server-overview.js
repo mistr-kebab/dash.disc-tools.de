@@ -10,6 +10,7 @@
         document.getElementById('nav-overview').href = '/manage/' + serverId + '/overview';
         if (document.getElementById('nav-settings')) document.getElementById('nav-settings').href = '/manage/' + serverId + '/settings';
         if (document.getElementById('nav-verification')) document.getElementById('nav-verification').href = '/manage/' + serverId + '/verification';
+        if (document.getElementById('nav-honeypot')) document.getElementById('nav-honeypot').href = '/manage/' + serverId + '/honeypot';
         if (serverIcon) {
             var isAnimated = serverIcon.startsWith('a_');
             var base = 'https://cdn.discordapp.com/icons/' + serverId + '/' + serverIcon;
@@ -190,7 +191,46 @@
             .catch(function() {});
     }
 
-    window.loadGrowthChart = loadGrowthChart;
+    document.getElementById('btn-3d').addEventListener('click', function() { loadGrowthChart(3); });
+    document.getElementById('btn-7d').addEventListener('click', function() { loadGrowthChart(7); });
+    document.getElementById('btn-30d').addEventListener('click', function() { loadGrowthChart(30); });
+
+    var closeBtn = document.getElementById('btn-role-warning-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            var modal = document.getElementById('role-warning-modal');
+            if (modal) modal.hidden = true;
+        });
+    }
+
+    function checkRoleHierarchy(botPos, roles, settings) {
+        var verRoleId = (settings && settings.verified_role) || '';
+        var unvRoleId = (settings && settings.unverified_role) || '';
+        var show = false;
+        [verRoleId, unvRoleId].forEach(function(rid) {
+            if (!rid) return;
+            var role = roles.find(function(r) { return r.id === rid; });
+            if (role && role.position >= botPos) show = true;
+        });
+        var modal = document.getElementById('role-warning-modal');
+        if (modal) modal.hidden = !show;
+    }
+
+    function loadRoleHierarchy() {
+        fetch('/api/guilds/' + serverId + '/settings', { credentials: 'include' })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                checkRoleHierarchy(data.botRolePosition || 0, data.roles || [], data.settings || {});
+            })
+            .catch(function() {});
+    }
+
+    var sidebarLabels = document.querySelectorAll('.profile-sidebar-section-label');
+    for (var i = 0; i < sidebarLabels.length; i++) {
+        sidebarLabels[i].addEventListener('click', function() {
+            this.parentElement.classList.toggle('collapsed');
+        });
+    }
 
     checkAuth().then(function(auth) {
         if (!auth.authenticated) return;
@@ -228,6 +268,8 @@
                 if (ns) ns.href = '/manage/' + serverId + '/settings';
                 var nv = document.getElementById('nav-verification');
                 if (nv) nv.href = '/manage/' + serverId + '/verification';
+                var nh = document.getElementById('nav-honeypot');
+                if (nh) nh.href = '/manage/' + serverId + '/honeypot';
 
                 document.getElementById('stat-members').textContent = fmt(server.memberCount);
                 document.getElementById('stat-roles').textContent = fmt(server.roleCount);
@@ -235,6 +277,8 @@
                 document.getElementById('stat-online').textContent = fmt(server.onlineCount);
 
                 loadGrowthChart(7);
+
+                loadRoleHierarchy();
 
                 if (server.icon) {
                     var isAnimated = server.icon.startsWith('a_');

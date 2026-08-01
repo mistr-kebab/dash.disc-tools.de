@@ -10,6 +10,7 @@
         document.getElementById('nav-overview').href = '/manage/' + serverId + '/overview';
         if (document.getElementById('nav-settings')) document.getElementById('nav-settings').href = '/manage/' + serverId + '/settings';
         if (document.getElementById('nav-verification')) document.getElementById('nav-verification').href = '/manage/' + serverId + '/verification';
+        if (document.getElementById('nav-honeypot')) document.getElementById('nav-honeypot').href = '/manage/' + serverId + '/honeypot';
         if (serverIcon) {
             var isAnimated = serverIcon.startsWith('a_');
             var base = 'https://cdn.discordapp.com/icons/' + serverId + '/' + serverIcon;
@@ -281,6 +282,13 @@
 
     document.getElementById('btn-discard').addEventListener('click', discardChanges);
     document.getElementById('btn-save-bar').addEventListener('click', function() { window.saveVerification(); });
+    var closeBtn = document.getElementById('btn-role-warning-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            var modal = document.getElementById('role-warning-modal');
+            if (modal) modal.hidden = true;
+        });
+    }
 
     window.updatePreview = function() {
         var title = getVal('setting-verify-title') || 'Verify your account';
@@ -425,6 +433,8 @@
                 document.getElementById('nav-overview').href = '/manage/' + serverId + '/overview';
                 document.getElementById('nav-settings').href = '/manage/' + serverId + '/settings';
                 document.getElementById('nav-verification').href = '/manage/' + serverId + '/verification';
+                var nh = document.getElementById('nav-honeypot');
+                if (nh) nh.href = '/manage/' + serverId + '/honeypot';
 
                 if (server.icon) {
                     var isAnimated = server.icon.startsWith('a_');

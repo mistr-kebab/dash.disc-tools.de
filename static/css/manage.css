@@ -781,3 +781,23 @@
 .modal-card .btn-modal-close:hover {
     background: #8e44ad;
 }
+
+.honeypot-info {
+    background: rgba(155, 89, 182, 0.08);
+    border: 1px solid rgba(155, 89, 182, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    color: #a1a1aa;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.honeypot-info i {
+    color: #9b59b6;
+    margin-right: 0.35rem;
+}
+
+.honeypot-info strong {
+    color: #e1e1e6;
+}

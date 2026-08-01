@@ -30,7 +30,7 @@
 
             </div>
             <div class="profile-sidebar-section">
-                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                <button class="profile-sidebar-section-label">
                     Server
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
@@ -41,13 +41,16 @@
                 </div>
             </div>
             <div class="profile-sidebar-section">
-                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                <button class="profile-sidebar-section-label">
                     Features
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="profile-sidebar-section-items">
                     <a href="" class="profile-nav-item" id="nav-verification" data-panel="verification">
                         <i class="fa-solid fa-circle-check"></i> <span>Verification</span>
+                    </a>
+                    <a href="" class="profile-nav-item" id="nav-honeypot" data-panel="honeypot">
+                        <i class="fa-solid fa-spider"></i> <span>Honeypot</span>
                     </a>
                 </div>
             </div>
@@ -96,9 +99,9 @@
                 <div class="chart-header">
                     <h3><i class="fa-solid fa-chart-line"></i> Member Growth</h3>
                     <div class="chart-toggle">
-                        <button onclick="loadGrowthChart(3)" id="btn-3d">3 days</button>
-                        <button onclick="loadGrowthChart(7)" id="btn-7d" class="active">7 days</button>
-                        <button onclick="loadGrowthChart(30)" id="btn-30d">30 days</button>
+                        <button id="btn-3d">3 days</button>
+                        <button id="btn-7d" class="active">7 days</button>
+                        <button id="btn-30d">30 days</button>
                     </div>
                 </div>
                     <div class="chart-body">
@@ -124,6 +127,14 @@
                             <div class="chart-stat-label">Peak</div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="modal-overlay" id="role-warning-modal" hidden>
+                <div class="modal-card">
+                    <div class="modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <h2>Role Hierarchy Warning</h2>
+                    <p>The bot's role must be <strong>above</strong> the Verified and Unverified roles in the server's role list. <a href="https://support.discord.com/hc/en-us/articles/214836687-Role-Management-101" target="_blank">Learn more</a></p>
+                    <button class="btn-modal-close" id="btn-role-warning-close">Got it</button>
                 </div>
             </div>
         </div>

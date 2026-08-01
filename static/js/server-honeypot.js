@@ -1,6 +1,6 @@
 (function() {
     var path = window.location.pathname;
-    var match = path.match(/^\/manage\/(\d+)\/settings\/?$/);
+    var match = path.match(/^\/manage\/(\d+)\/honeypot\/?$/);
     var serverId = match ? match[1] : null;
     document.getElementById('server-sidebar-id').textContent = serverId || '—';
 
@@ -28,14 +28,10 @@
         }
     }
 
-    var savedValue = '';
-    var savedEnabled = false;
+    var saved = {};
     var bar = document.getElementById('unsaved-bar');
-    var catSel = null;
-    var chanSel = null;
-    var toggleEl = null;
-    var allChannels = [];
     var toastEl = null;
+    var allChannels = [];
 
     function showToast(text, className) {
         if (!toastEl) return;
@@ -46,8 +42,8 @@
         toastEl._timeout = setTimeout(function() { toastEl.hidden = true; }, 2500);
     }
 
-    function populateChannels(categoryId) {
-        chanSel.innerHTML = '<option value="">— None —</option>';
+    function populateChannels(sel, categoryId) {
+        sel.innerHTML = '<option value="">— Auto-create —</option>';
         var filtered = categoryId
             ? allChannels.filter(function(c) { return c.parentId === categoryId; })
             : allChannels;
@@ -55,19 +51,52 @@
             var opt = document.createElement('option');
             opt.value = ch.id;
             opt.textContent = '#' + ch.name;
-            chanSel.appendChild(opt);
+            sel.appendChild(opt);
         });
     }
 
-    function updateSelectsState() {
-        var on = toggleEl.checked;
-        catSel.disabled = !on;
-        chanSel.disabled = !on;
+    function getVal(id) {
+        var el = document.getElementById(id);
+        return el ? el.value : '';
+    }
+
+    function setVal(id, value) {
+        var el = document.getElementById(id);
+        if (el) el.value = value || '';
+    }
+
+    function getCurrentValues() {
+        return {
+            honeypot_channel: getVal('setting-honeypot-channel'),
+            honeypot_penalty: getVal('setting-honeypot-penalty'),
+            honeypot_ban_duration: getVal('setting-ban-duration')
+        };
+    }
+
+    function isDirty() {
+        var cur = getCurrentValues();
+        for (var k in saved) {
+            if (String(cur[k]) !== String(saved[k])) return true;
+        }
+        return false;
     }
 
     function checkDirty() {
-        var dirty = chanSel && (chanSel.value !== savedValue || toggleEl.checked !== savedEnabled);
-        bar.style.display = dirty ? 'flex' : 'none';
+        bar.style.display = isDirty() ? 'flex' : 'none';
+    }
+
+    function discardChanges() {
+        setVal('setting-honeypot-channel', saved.honeypot_channel);
+        setVal('setting-honeypot-penalty', saved.honeypot_penalty);
+        setVal('setting-ban-duration', saved.honeypot_ban_duration);
+        updateBanDurationVisibility();
+        bar.style.display = 'none';
+    }
+
+    function updateBanDurationVisibility() {
+        var penalty = getVal('setting-honeypot-penalty');
+        var row = document.getElementById('row-ban-duration');
+        row.style.display = penalty === 'ban' ? '' : 'none';
     }
 
     function checkRoleHierarchy(botPos, roles, settings) {
@@ -83,19 +112,6 @@
         if (modal) modal.hidden = !show;
     }
 
-    function discardChanges() {
-        if (chanSel) chanSel.value = savedValue;
-        toggleEl.checked = savedEnabled;
-        updateSelectsState();
-        if (catSel && savedValue) {
-            var ch = allChannels.find(function(c) { return c.id === savedValue; });
-            catSel.value = ch ? ch.parentId || '' : '';
-            populateChannels(catSel.value);
-            chanSel.value = savedValue;
-        }
-        bar.style.display = 'none';
-    }
-
     function loadSettings() {
         fetch('/api/guilds/' + serverId + '/settings', { credentials: 'include' })
             .then(function(r) {
@@ -107,74 +123,86 @@
             })
             .then(function(data) {
                 if (!data) return;
-                catSel = document.getElementById('setting-log-category');
-                chanSel = document.getElementById('setting-log-channel');
-                toggleEl = document.getElementById('toggle-audit-log');
                 toastEl = document.getElementById('toast');
                 allChannels = data.channels || [];
+                var settings = data.settings || {};
 
-                var categories = data.categories || [];
-                categories.forEach(function(c) {
+                var cats = data.categories || [];
+                var catSel = document.getElementById('setting-honeypot-category');
+                cats.forEach(function(c) {
                     var opt = document.createElement('option');
                     opt.value = c.id;
                     opt.textContent = c.name;
                     catSel.appendChild(opt);
                 });
 
-                var savedChannelId = '';
-                if (data.settings && data.settings.log_channel) {
-                    savedChannelId = data.settings.log_channel;
-                }
-                savedEnabled = !!savedChannelId;
-                toggleEl.checked = savedEnabled;
+                var chanSel = document.getElementById('setting-honeypot-channel');
+                populateChannels(chanSel, '');
 
-                if (savedChannelId) {
-                    var ch = allChannels.find(function(c) { return c.id === savedChannelId; });
-                    if (ch && ch.parentId) {
-                        catSel.value = ch.parentId;
-                    } else {
-                        catSel.value = '';
-                    }
-                }
+                var s = {
+                    honeypot_channel: settings.honeypot_channel || '',
+                    honeypot_penalty: settings.honeypot_penalty || '',
+                    honeypot_ban_duration: String(settings.honeypot_ban_duration || '0')
+                };
 
-                populateChannels(catSel.value);
-                chanSel.value = savedChannelId;
-                savedValue = savedChannelId;
-                updateSelectsState();
+                setVal('setting-honeypot-channel', s.honeypot_channel);
+                setVal('setting-honeypot-penalty', s.honeypot_penalty);
+                setVal('setting-ban-duration', s.honeypot_ban_duration);
+
+                saved = s;
+
+                updateBanDurationVisibility();
+                checkDirty();
 
                 catSel.addEventListener('change', function() {
-                    populateChannels(catSel.value);
-                    chanSel.value = '';
+                    populateChannels(chanSel, catSel.value);
                     checkDirty();
                 });
                 chanSel.addEventListener('change', checkDirty);
-                toggleEl.addEventListener('change', function() {
-                    updateSelectsState();
+                document.getElementById('setting-honeypot-penalty').addEventListener('change', function() {
+                    updateBanDurationVisibility();
                     checkDirty();
                 });
+                document.getElementById('setting-ban-duration').addEventListener('change', checkDirty);
 
                 checkRoleHierarchy(data.botRolePosition || 0, data.roles || [], data.settings || {});
             })
             .catch(function() {});
     }
 
-    window.saveSettings = function() {
+    window.saveHoneypot = function() {
         var btnBar = document.getElementById('btn-save-bar');
         if (btnBar) btnBar.disabled = true;
 
-        var logChannel = toggleEl.checked ? (chanSel ? chanSel.value : '') : '';
+        var values = getCurrentValues();
         fetch('/api/guilds/' + serverId + '/settings', {
             method: 'PUT',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ log_channel: logChannel || null })
+            body: JSON.stringify({
+                honeypot_channel: values.honeypot_channel || null,
+                honeypot_penalty: values.honeypot_penalty || null,
+                honeypot_ban_duration: values.honeypot_penalty === 'ban' ? parseInt(values.honeypot_ban_duration) || 0 : null
+            })
         })
         .then(function(r) { return r.json(); })
-        .then(function() {
+        .then(function(data) {
+            if (data.error) {
+                showToast(data.error, 'error');
+                if (btnBar) btnBar.disabled = false;
+                return;
+            }
             showToast('Saved!', 'success');
             if (btnBar) btnBar.disabled = false;
-            savedValue = logChannel;
-            savedEnabled = toggleEl.checked;
+            saved = {
+                honeypot_channel: data.honeypot_channel || '',
+                honeypot_penalty: values.honeypot_penalty,
+                honeypot_ban_duration: values.honeypot_penalty === 'ban' ? (String(parseInt(values.honeypot_ban_duration) || 0)) : '0'
+            };
+            if (!values.honeypot_channel && data.honeypot_channel) {
+                location.reload();
+                return;
+            }
             bar.style.display = 'none';
         })
         .catch(function() {
@@ -184,17 +212,13 @@
     };
 
     document.getElementById('btn-discard').addEventListener('click', discardChanges);
-    document.getElementById('btn-save-bar').addEventListener('click', function() { window.saveSettings(); });
+    document.getElementById('btn-save-bar').addEventListener('click', function() { window.saveHoneypot(); });
     var closeBtn = document.getElementById('btn-role-warning-close');
     if (closeBtn) {
         closeBtn.addEventListener('click', function() {
             var modal = document.getElementById('role-warning-modal');
             if (modal) modal.hidden = true;
         });
-    }
-
-    function isDirty() {
-        return chanSel && (chanSel.value !== savedValue || toggleEl.checked !== savedEnabled);
     }
 
     window.addEventListener('beforeunload', function(e) {
@@ -250,14 +274,12 @@
                     return;
                 }
                 document.getElementById('server-sidebar-name').textContent = server.name;
-                document.getElementById('server-sub').textContent = 'Configure ' + server.name;
-                document.querySelector('title').textContent = server.name + ' Settings – Disc-Tools';
+                document.getElementById('server-sub').textContent = 'Set up a honeypot for ' + server.name;
+                document.querySelector('title').textContent = server.name + ' Honeypot – Disc-Tools';
                 document.getElementById('nav-overview').href = '/manage/' + serverId + '/overview';
                 document.getElementById('nav-settings').href = '/manage/' + serverId + '/settings';
-                var nv = document.getElementById('nav-verification');
-                if (nv) nv.href = '/manage/' + serverId + '/verification';
-                var nh = document.getElementById('nav-honeypot');
-                if (nh) nh.href = '/manage/' + serverId + '/honeypot';
+                document.getElementById('nav-verification').href = '/manage/' + serverId + '/verification';
+                document.getElementById('nav-honeypot').href = '/manage/' + serverId + '/honeypot';
 
                 if (server.icon) {
                     var isAnimated = server.icon.startsWith('a_');

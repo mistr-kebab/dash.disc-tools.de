@@ -52,6 +52,7 @@
     }
 
     function showBanner() {
+        if (getConsent()) return;
         var banner = document.getElementById('cookie-banner');
         if (!banner) {
             banner = createBannerHTML();
