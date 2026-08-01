@@ -1,5 +1,3 @@
-document.getElementById('year').textContent = new Date().getFullYear();
-
 var verifiedRecipientId = null;
 
 function showToast(msg, type) {
@@ -17,6 +15,7 @@ function showToast(msg, type) {
 function toggleCard(id) {
     var body = document.getElementById('body-' + id.replace('card-', ''));
     var chevron = document.getElementById('chevron-' + id.replace('card-', ''));
+    if (!body || !chevron) return;
     var isOpen = body.classList.contains('open');
 
     document.querySelectorAll('.p-card-body').forEach(function(b) { b.classList.remove('open'); });
@@ -28,12 +27,49 @@ function toggleCard(id) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    var bodySub = document.getElementById('body-sub');
+    var chevSub = document.getElementById('chevron-sub');
+    if (bodySub) bodySub.classList.add('open');
+    if (chevSub) chevSub.classList.add('open');
+
+    var headSub = document.querySelector('#card-sub .p-card-head');
+    if (headSub) headSub.addEventListener('click', function() { toggleCard('card-sub'); });
+
+    var headGift = document.querySelector('#card-gift .p-card-head');
+    if (headGift) headGift.addEventListener('click', function() { toggleCard('card-gift'); });
+
+    var btnBuy = document.getElementById('btn-buy');
+    if (btnBuy) btnBuy.addEventListener('click', startCheckout);
+
+    var btnCheck = document.getElementById('btn-check');
+    if (btnCheck) btnCheck.addEventListener('click', checkRecipient);
+
+    var btnConfirm = document.getElementById('btn-confirm-gift');
+    if (btnConfirm) btnConfirm.addEventListener('click', startGiftCheckout);
+
+    var btnCancel = document.getElementById('btn-gift-cancel');
+    if (btnCancel) btnCancel.addEventListener('click', function() {
+        document.getElementById('gift-user-card').style.display = 'none';
+    });
+
+    var giftInput = document.getElementById('gift-recipient');
+    if (giftInput) giftInput.addEventListener('input', function() {
+        document.getElementById('gift-user-card').style.display = 'none';
+        verifiedRecipientId = null;
+    });
+});
+
 checkAuth().then(function(auth) {
     var headerRight = document.getElementById('header-right');
     if (headerRight) updateHeader(auth, headerRight);
 
     if (!auth.authenticated) {
-        document.getElementById('login-notice').style.display = 'flex';
+        var notice = document.getElementById('login-notice');
+        if (notice) notice.style.display = 'flex';
     }
     if (auth.authenticated && auth.user) {
         var nav = document.getElementById('nav-servers');
@@ -42,11 +78,6 @@ checkAuth().then(function(auth) {
             nav.style.display = '';
         }
     }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('body-sub').classList.add('open');
-    document.getElementById('chevron-sub').classList.add('open');
 });
 
 async function startCheckout() {

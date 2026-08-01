@@ -53,7 +53,7 @@
                 <!-- Subscribe card -->
                 <div class="p-card" id="card-sub">
                     <div class="p-card-bar"></div>
-                    <div class="p-card-head" onclick="toggleCard('card-sub')">
+                    <div class="p-card-head">
                         <div class="p-card-head-left">
                             <div class="p-card-icon purple"><i class="fa-solid fa-crown"></i></div>
                             <div>
@@ -93,7 +93,7 @@
                                     Priority support — coming soon
                                 </li>
                             </ul>
-                            <button class="btn-prem" id="btn-buy" onclick="startCheckout()">
+                            <button class="btn-prem" id="btn-buy">
                                 Subscribe Now <i class="fa-solid fa-arrow-right"></i>
                             </button>
                             <p class="prem-fine">Cancel anytime &mdash; no strings attached.</p>
@@ -104,7 +104,7 @@
                 <!-- Gift card -->
                 <div class="p-card gift" id="card-gift">
                     <div class="p-card-bar"></div>
-                    <div class="p-card-head" onclick="toggleCard('card-gift')">
+                    <div class="p-card-head">
                         <div class="p-card-head-left">
                             <div class="p-card-icon pink"><i class="fa-solid fa-gift"></i></div>
                             <div>
@@ -145,16 +145,15 @@
                             <label class="gift-label" for="gift-recipient">Enter the recipient's Discord User ID to get started:</label>
 
                             <div class="gift-input-row">
-                                <input
-                                    class="gift-input"
-                                    id="gift-recipient"
-                                    type="text"
-                                    placeholder="Recipient Discord User ID"
-                                    maxlength="20"
-                                    autocomplete="off"
-                                    oninput="document.getElementById('gift-user-card').style.display='none'; verifiedRecipientId = null;"
-                                >
-                                <button class="btn-check" id="btn-check" onclick="checkRecipient()">
+                                    <input
+                                        class="gift-input"
+                                        id="gift-recipient"
+                                        type="text"
+                                        placeholder="Recipient Discord User ID"
+                                        maxlength="20"
+                                        autocomplete="off"
+                                    >
+                                <button class="btn-check" id="btn-check">
                                     <i class="fa-solid fa-magnifying-glass"></i> Lookup
                                 </button>
                             </div>
@@ -167,8 +166,8 @@
                                     <span class="guild-badge" id="gift-badge"></span>
                                 </div>
                                 <div class="guc-actions">
-                                    <button class="guc-cancel" onclick="document.getElementById('gift-user-card').style.display='none'">Cancel</button>
-                                    <button class="guc-confirm" id="btn-confirm-gift" onclick="startGiftCheckout()">Pay &amp; Gift <i class="fa-solid fa-gift"></i></button>
+                                    <button class="guc-cancel" id="btn-gift-cancel">Cancel</button>
+                                    <button class="guc-confirm" id="btn-confirm-gift">Pay &amp; Gift <i class="fa-solid fa-gift"></i></button>
                                 </div>
                             </div>
                         </div>
