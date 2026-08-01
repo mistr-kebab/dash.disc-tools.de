@@ -1139,7 +1139,7 @@ p { color: #a1a1aa; line-height: 1.6; margin-bottom: 1.5rem; }
         .compare-section {
             position: relative;
             z-index: 1;
-            max-width: 1050px;
+            max-width: 800px;
             margin: 0 auto 3rem;
             padding: 0 2rem;
         }
@@ -1165,26 +1165,29 @@ p { color: #a1a1aa; line-height: 1.6; margin-bottom: 1.5rem; }
 
         .compare-hd {
             display: grid;
-            grid-template-columns: 1fr 1fr 1.35fr;
-            background: rgba(255, 255, 255, 0.025);
+            grid-template-columns: 1fr 120px 160px;
+            background: rgba(155, 89, 182, 0.06);
             border-bottom: 1px solid #27272a;
         }
         .compare-hd-feature,
         .compare-hd-col {
-            padding: 0.85rem 1.4rem;
-            font-size: 0.7rem;
+            padding: 0.75rem 1.2rem;
+            font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             color: #71717a;
+            text-align: center;
         }
+        .compare-hd-feature { text-align: left; color: transparent; }
         .compare-hd-prem {
             color: #c77dff;
+            background: rgba(155, 89, 182, 0.08);
         }
 
         .compare-row {
             display: grid;
-            grid-template-columns: 1fr 1fr 1.35fr;
+            grid-template-columns: 1fr 120px 160px;
             border-bottom: 1px solid #1c1c20;
             transition: background 0.15s;
         }
@@ -1192,37 +1195,44 @@ p { color: #a1a1aa; line-height: 1.6; margin-bottom: 1.5rem; }
             border-bottom: none;
         }
         .compare-row:hover {
-            background: rgba(255, 255, 255, 0.015);
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .compare-feature {
-            padding: 1rem 1.4rem;
+            padding: 0.9rem 1.2rem;
             font-size: 0.875rem;
             font-weight: 600;
             color: #e4e4e7;
+            display: flex;
+            align-items: center;
         }
 
         .compare-free {
-            padding: 1rem 1.4rem;
+            padding: 0.9rem 1.2rem;
             font-size: 0.8125rem;
             color: #71717a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .compare-free i {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #52525b;
         }
 
         .compare-prem {
-            padding: 1rem 1.4rem;
+            padding: 0.9rem 1.2rem;
             font-size: 0.8125rem;
             color: #d4d4d8;
             background: linear-gradient(90deg, rgba(155, 89, 182, 0.06) 0%, rgba(155, 89, 182, 0.02) 100%);
-            border-left: 1px solid rgba(155, 89, 182, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
         }
         .compare-prem i {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #2ecc71;
-            margin-right: 0.4rem;
         }
 
         /* ── Toast ── */
@@ -1270,8 +1280,8 @@ p { color: #a1a1aa; line-height: 1.6; margin-bottom: 1.5rem; }
         }
         @media (max-width: 560px) {
             .compare-section { padding: 0 1.25rem; }
-            .compare-hd { grid-template-columns: 1fr 0.85fr 1.15fr; }
-            .compare-row { grid-template-columns: 1fr 0.85fr 1.15fr; }
+            .compare-hd { grid-template-columns: 1fr 90px 130px; }
+            .compare-row { grid-template-columns: 1fr 90px 130px; }
             .compare-hd-feature,
             .compare-hd-col,
             .compare-feature,
