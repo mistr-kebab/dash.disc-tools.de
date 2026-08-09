@@ -28,7 +28,7 @@
                 </button>
             </div>
             <div class="profile-sidebar-section">
-                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                <button class="profile-sidebar-section-label" >
                     General
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="profile-sidebar-section">
-                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                <button class="profile-sidebar-section-label" >
                     Sessions
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="profile-sidebar-section">
-                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                <button class="profile-sidebar-section-label" >
                     Billing
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <a href="/profile/settings" class="profile-nav-item"><i class="fa-solid fa-gear"></i> <span>Settings</span></a>
-                <button class="profile-nav-item" onclick="logout()">
+                <button class="profile-nav-item" id="profile-logout">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span>
                 </button>
             </div>
@@ -105,7 +105,7 @@
                         <div class="setting-label"><i class="fa-solid fa-credit-card"></i> Billing Portal</div>
                         <div class="setting-desc">Update payment method, view invoices, or cancel your subscription.</div>
                     </div>
-                    <button class="btn-prem btn-sm" id="btn-portal" onclick="openPortal()">
+                    <button class="btn-prem btn-sm" id="btn-portal">
                         Open Portal <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </button>
                 </div>
@@ -117,17 +117,17 @@
                         <div class="setting-label setting-label-danger"><i class="fa-solid fa-triangle-exclamation"></i> Cancel Subscription</div>
                         <div class="setting-desc">This will cancel your Premium subscription at the end of your billing period.</div>
                     </div>
-                    <button class="btn-prem btn-sm btn-danger" id="btn-cancel" onclick="cancelSubscription()">
+                    <button class="btn-prem btn-sm btn-danger" id="btn-cancel">
                         Cancel <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
             </div>
         </div>
     </main>
-    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/cookie-banner.js?v=3"></script>
     <script src="/static/js/auth.js?v=2"></script>
-    <script src="/static/js/profile.js?v=2"></script>
-    <script src="/static/js/profile-manage.js?v=2"></script>
+    <script src="/static/js/profile.js?v=5"></script>
+    <script src="/static/js/profile-manage.js?v=3"></script>
     <script defer src="https://umami.disc-tools.de/script.js" data-website-id="71c24f0f-5dfe-41b7-a2ba-0585cba7946c"></script>
 </body>
 </html>

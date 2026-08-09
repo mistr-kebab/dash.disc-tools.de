@@ -250,3 +250,10 @@ function loadHistory(days) {
 
 loadLiveStats();
 loadHistory(7);
+
+(function() {
+    var btn7 = document.getElementById('btn-7d');
+    var btn30 = document.getElementById('btn-30d');
+    if (btn7) btn7.addEventListener('click', function() { loadHistory(7); });
+    if (btn30) btn30.addEventListener('click', function() { loadHistory(30); });
+})();

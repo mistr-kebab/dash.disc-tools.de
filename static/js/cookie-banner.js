@@ -65,6 +65,8 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         if (getConsent()) return;
+        var existing = document.getElementById('cookie-banner');
+        if (existing) bindEvents(existing);
         setTimeout(showBanner, 2000);
     });
 

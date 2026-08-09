@@ -280,10 +280,96 @@ function loadSettings() {
             document.getElementById('opt-alt-visibility').checked = data.alt_visibility;
         })
         .catch(function() {});
+    loadGdprStatus();
+}
+
+function loadGdprStatus() {
+    fetch('/api/gdpr/request', { credentials: 'include' })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            var btn = document.getElementById('gdpr-request-btn');
+            var emailInfo = document.getElementById('gdpr-email-info');
+            var status = document.getElementById('gdpr-status');
+            var input = document.getElementById('gdpr-email');
+            if (!btn || !emailInfo) return;
+
+            var discordEmail = data.discord_email || null;
+            var usedEmail = data.gdpr_email || discordEmail;
+            input.placeholder = usedEmail || 'Email address (required)';
+            if (data.gdpr_email && data.gdpr_email !== discordEmail) {
+                emailInfo.textContent = 'Your request will be sent to ' + data.gdpr_email + ' (Discord email: ' + (discordEmail || 'not available') + ').';
+            } else if (usedEmail) {
+                emailInfo.textContent = 'Your request will be sent to ' + usedEmail + '.';
+            } else {
+                emailInfo.textContent = 'No email on your Discord account - enter an email address to request your data.';
+                input.placeholder = 'Email address (required)';
+            }
+
+            if (!data.can_request && data.next_allowed_at) {
+                var next = new Date(data.next_allowed_at);
+                var days = Math.ceil((next.getTime() - Date.now()) / 86400000);
+                btn.disabled = true;
+                btn.classList.add('btn-disabled');
+                status.textContent = 'Next request possible in ' + (days > 0 ? days + ' day' + (days !== 1 ? 's' : '') : 'less than a day') + '.';
+            }
+        })
+        .catch(function() {});
+}
+
+function requestData() {
+    var btn = document.getElementById('gdpr-request-btn');
+    if (!btn || btn.disabled) return;
+    var email = document.getElementById('gdpr-email').value.trim();
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    fetch('/api/gdpr/request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ email: email || undefined })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+        if (data.success) {
+            showProfileToast('Data request sent to ' + data.sent_to + '.');
+            btn.textContent = 'Request my data';
+            loadGdprStatus();
+        } else if (data.error === 'rate_limited') {
+            showProfileToast('You already requested your data recently.', true);
+            btn.textContent = 'Request my data';
+            loadGdprStatus();
+        } else {
+            showProfileToast(data.error || 'Failed to send request.', true);
+            btn.textContent = 'Request my data';
+            btn.disabled = false;
+        }
+    })
+    .catch(function() {
+        showProfileToast('Failed to send request. Please try again.', true);
+        btn.textContent = 'Request my data';
+        btn.disabled = false;
+    });
 }
 
 var path = window.location.pathname.replace(/\/$/, '');
 var page = path.split('/').pop();
+
+var gdprBtn = document.getElementById('gdpr-request-btn');
+if (gdprBtn) gdprBtn.addEventListener('click', requestData);
+var optUsernameHistory = document.getElementById('opt-username-history');
+if (optUsernameHistory) optUsernameHistory.addEventListener('change', saveSetting);
+var optAltVisibility = document.getElementById('opt-alt-visibility');
+if (optAltVisibility) optAltVisibility.addEventListener('change', saveSetting);
+var btnSaveDisplayName = document.getElementById('btn-save-display-name');
+if (btnSaveDisplayName) btnSaveDisplayName.addEventListener('click', saveDisplayName);
+var sidebarLabels = document.querySelectorAll('.profile-sidebar-section-label');
+for (var i = 0; i < sidebarLabels.length; i++) {
+    sidebarLabels[i].addEventListener('click', function() {
+        this.parentElement.classList.toggle('collapsed');
+    });
+}
+var btnLogout = document.getElementById('profile-logout');
+if (btnLogout) btnLogout.addEventListener('click', logout);
 
 checkAuth().then(function(auth) {
     if (!auth.authenticated || !auth.user) {

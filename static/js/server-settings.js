@@ -269,3 +269,12 @@
             });
     });
 })();
+
+(function() {
+    var sidebarLabels = document.querySelectorAll('.profile-sidebar-section-label');
+    for (var i = 0; i < sidebarLabels.length; i++) {
+        sidebarLabels[i].addEventListener('click', function() {
+            this.parentElement.classList.toggle('collapsed');
+        });
+    }
+})();

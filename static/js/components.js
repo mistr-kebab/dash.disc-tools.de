@@ -10,6 +10,7 @@
                     '<a href="/" class="nav-link" data-nav="home">Dashboard</a>' +
 
                     '<a href="/premium" class="nav-link" data-nav="premium">Premium</a>' +
+                    '<a href="/shop" class="nav-link" data-nav="shop">Shop</a>' +
                     '<a href="/stats" class="nav-link" data-nav="stats">Stats</a>' +
                     '<a href="https://status.disc-tools.de/status/dash" class="nav-link" target="_blank" rel="noopener">Status</a>' +
                 '</nav>' +
@@ -42,7 +43,7 @@
                     '<h3>Product</h3>' +
                     '<a href="/">Dashboard</a>' +
                     '<a href="/invite">Invite Bot</a>' +
-
+                    '<a href="/shop">Shop</a>' +
                     '<a href="/premium">Premium</a>' +
                 '</div>' +
                 '<div class="footer-col">' +

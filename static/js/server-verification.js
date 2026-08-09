@@ -446,3 +446,25 @@
             });
     });
 })();
+
+(function() {
+    var fileImage = document.getElementById('setting-verify-image-file');
+    var fileThumb = document.getElementById('setting-verify-thumbnail-file');
+    var btnImage = document.getElementById('btn-upload-image');
+    var btnThumb = document.getElementById('btn-upload-thumbnail');
+    var btnResend = document.getElementById('btn-resend-embed');
+    if (fileImage) fileImage.addEventListener('change', function() { uploadImage('image'); });
+    if (fileThumb) fileThumb.addEventListener('change', function() { uploadImage('thumbnail'); });
+    if (btnImage && fileImage) btnImage.addEventListener('click', function() { fileImage.click(); });
+    if (btnThumb && fileThumb) btnThumb.addEventListener('click', function() { fileThumb.click(); });
+    if (btnResend) btnResend.addEventListener('click', resendEmbed);
+})();
+
+(function() {
+    var sidebarLabels = document.querySelectorAll('.profile-sidebar-section-label');
+    for (var i = 0; i < sidebarLabels.length; i++) {
+        sidebarLabels[i].addEventListener('click', function() {
+            this.parentElement.classList.toggle('collapsed');
+        });
+    }
+})();

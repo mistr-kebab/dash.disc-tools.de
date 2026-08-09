@@ -1,0 +1,103 @@
+.shop-page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 6rem 1.5rem 5rem;
+}
+
+.shop-hero {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.shop-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(155, 89, 182, 0.05));
+    border: 1px solid rgba(155, 89, 182, 0.3);
+    color: #9b59b6;
+    font-size: 1.8rem;
+}
+
+.shop-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.6rem 0;
+}
+
+.shop-hero p {
+    font-size: 1rem;
+    color: #a1a1aa;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.shop-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+    margin-bottom: 2.5rem;
+}
+
+.shop-feature {
+    background: #141416;
+    border: 1px solid #2a2a2e;
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    text-align: center;
+}
+
+.shop-feature i {
+    font-size: 1.2rem;
+    color: #9b59b6;
+    margin-bottom: 0.6rem;
+}
+
+.shop-feature b {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #e1e1e6;
+    margin-bottom: 0.2rem;
+}
+
+.shop-feature span {
+    font-size: 0.75rem;
+    color: #71717a;
+    line-height: 1.5;
+    display: block;
+}
+
+.shop-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #52525b;
+}
+
+.shop-note a {
+    color: #9b59b6;
+    text-decoration: none;
+}
+
+.shop-note a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .shop-page {
+        padding: 4rem 1rem 3rem;
+    }
+    .shop-hero h1 {
+        font-size: 1.7rem;
+    }
+    .shop-features {
+        grid-template-columns: 1fr;
+    }
+}

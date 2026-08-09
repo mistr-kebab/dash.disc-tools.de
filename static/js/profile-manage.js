@@ -105,3 +105,10 @@ async function cancelSubscription() {
 }
 
 loadManagePage();
+
+(function() {
+    var portal = document.getElementById('btn-portal');
+    var cancel = document.getElementById('btn-cancel');
+    if (portal) portal.addEventListener('click', openPortal);
+    if (cancel) cancel.addEventListener('click', cancelSubscription);
+})();

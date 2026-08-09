@@ -178,13 +178,13 @@
         <div class="cookie-header"><i class="fa-solid fa-cookie cookie-icon"></i><span class="cookie-title">Cookie Consent</span></div>
         <div class="cookie-text">This site uses cookies for essential functionality and analytics. <a href="/legal/privacy-policy">Learn more</a></div>
         <div class="cookie-btns">
-            <button class="cookie-btn cookie-btn-ghost" onclick="rejectAll()">Reject all</button>
-            <button class="cookie-btn cookie-btn-secondary" onclick="essentialOnly()">Only essential</button>
-            <button class="cookie-btn cookie-btn-primary" onclick="acceptAll()">Accept all</button>
+            <button class="cookie-btn cookie-btn-ghost" data-action="reject">Reject all</button>
+            <button class="cookie-btn cookie-btn-secondary" data-action="essential">Only essential</button>
+            <button class="cookie-btn cookie-btn-primary" data-action="accept">Accept all</button>
         </div>
     </div>
 
-    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/cookie-banner.js?v=3"></script>
     <script src="/static/js/auth.js?v=2"></script>
     <script src="/static/js/page-init.js"></script>
 </body>

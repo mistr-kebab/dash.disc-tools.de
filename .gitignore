@@ -10,3 +10,10 @@ node_modules/
 .vscode/
 .idea/
 Thumbs.db
+
+# Runtime uploads (bot-managed, must never be committed)
+static/uploads/
+
+# Keys / certificates
+*.pem
+*.key

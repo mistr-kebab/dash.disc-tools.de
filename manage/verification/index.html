@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="profile-sidebar-section">
-                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                <button class="profile-sidebar-section-label">
                     Server
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="profile-sidebar-section">
-                <button class="profile-sidebar-section-label" onclick="this.parentElement.classList.toggle('collapsed')">
+                <button class="profile-sidebar-section-label">
                     Features
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
@@ -161,9 +161,9 @@
                         <div class="setting-desc">Large image at the bottom of the embed. Upload or paste a URL.</div>
                     </div>
                     <div class="setting-control setting-control-col">
-                        <input type="file" id="setting-verify-image-file" accept="image/*" onchange="uploadImage('image')" style="display:none" aria-hidden="true">
+                        <input type="file" id="setting-verify-image-file" accept="image/*"  style="display:none" aria-hidden="true">
                         <input type="text" id="setting-verify-image" class="setting-input" placeholder="https://...">
-                        <button class="btn-upload" onclick="document.getElementById('setting-verify-image-file').click()">Upload</button>
+                        <button class="btn-upload" id="btn-upload-image">Upload</button>
                     </div>
                 </div>
                 <div class="setting-row">
@@ -172,9 +172,9 @@
                         <div class="setting-desc">Small image top-right (optional). Upload or paste a URL.</div>
                     </div>
                     <div class="setting-control setting-control-col">
-                        <input type="file" id="setting-verify-thumbnail-file" accept="image/*" onchange="uploadImage('thumbnail')" style="display:none" aria-hidden="true">
+                        <input type="file" id="setting-verify-thumbnail-file" accept="image/*"  style="display:none" aria-hidden="true">
                         <input type="text" id="setting-verify-thumbnail" class="setting-input" placeholder="https://...">
-                        <button class="btn-upload" onclick="document.getElementById('setting-verify-thumbnail-file').click()">Upload</button>
+                        <button class="btn-upload" id="btn-upload-thumbnail">Upload</button>
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@
             </div>
 
             <div class="settings-actions">
-                <button class="btn-discord" id="btn-resend-embed" onclick="resendEmbed()">Resend Embed</button>
+                <button class="btn-discord" id="btn-resend-embed" >Resend Embed</button>
                 <span class="save-status" id="resend-status"></span>
             </div>
         </div>
@@ -203,9 +203,9 @@
         </div>
         <div class="toast" id="toast" hidden></div>
     </main>
-    <script src="/static/js/cookie-banner.js?v=2"></script>
+    <script src="/static/js/cookie-banner.js?v=3"></script>
     <script src="/static/js/auth.js?v=2"></script>
-    <script src="/static/js/server-verification.js?v=2"></script>
+    <script src="/static/js/server-verification.js?v=4"></script>
     <script defer src="https://umami.disc-tools.de/script.js" data-website-id="71c24f0f-5dfe-41b7-a2ba-0585cba7946c"></script>
 </body>
 </html>
