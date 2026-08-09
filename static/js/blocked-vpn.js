@@ -8,6 +8,6 @@
     ];
     map.forEach(function(pair) {
         var el = document.getElementById(pair[0]);
-        if (el) el.textContent = params.get(pair[1]) || '—';
+        if (el) el.textContent = params.get(pair[1]) || '-';
     });
 })();

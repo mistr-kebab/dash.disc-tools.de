@@ -35,6 +35,7 @@
                         '<a href="https://discord.gg/rtRs8rhj5u" target="_blank" rel="noopener" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>' +
                         '<a href="https://www.instagram.com/disc.tools" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>' +
                         '<a href="https://www.tiktok.com/@disc.tools" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>' +
+                        '<a href="https://x.com/disc_tools" target="_blank" rel="noopener" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>' +
                     '</div>' +
                 '</div>' +
                 '<div class="footer-col">' +

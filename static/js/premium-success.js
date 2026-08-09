@@ -6,7 +6,15 @@ checkAuth().then(function(auth) {
 });
 
 (function() {
-    var isGift = new URLSearchParams(window.location.search).has('gift');
+    var params = new URLSearchParams(window.location.search);
+    if (params.has('onetime')) {
+        document.getElementById('success-title').textContent = 'Premium Activated!';
+        document.getElementById('success-text').innerHTML = 'Your <strong>1 month of Disc-Tools Premium</strong> is now active. Check your DMs for the confirmation and join the server to get your role automatically.';
+        document.getElementById('success-btn').innerHTML = 'Back to Premium <i class="fa-solid fa-arrow-right"></i>';
+        document.getElementById('success-btn').href = '/premium';
+        return;
+    }
+    var isGift = params.has('gift');
     if (isGift) {
         document.getElementById('success-title').textContent = 'Gift Sent!';
         document.getElementById('success-text').innerHTML = 'Your gift has been sent. The recipient will receive a DM with their Premium perks and the role will be assigned automatically.';

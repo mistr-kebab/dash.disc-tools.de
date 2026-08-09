@@ -2,7 +2,7 @@
     var path = window.location.pathname;
     var match = path.match(/^\/manage\/(\d+)\/settings\/?$/);
     var serverId = match ? match[1] : null;
-    document.getElementById('server-sidebar-id').textContent = serverId || '—';
+    document.getElementById('server-sidebar-id').textContent = serverId || '-';
 
     function showBotMissingPanel(serverName, serverIcon, clientId) {
         var inviteUrl = 'https://discord.com/oauth2/authorize?client_id=' + (clientId || '1508899864602345582') + '&permissions=8&scope=bot&guild_id=' + serverId + '&disable_guild_select=true';
@@ -47,7 +47,7 @@
     }
 
     function populateChannels(categoryId) {
-        chanSel.innerHTML = '<option value="">— None —</option>';
+        chanSel.innerHTML = '<option value="">- None -</option>';
         var filtered = categoryId
             ? allChannels.filter(function(c) { return c.parentId === categoryId; })
             : allChannels;

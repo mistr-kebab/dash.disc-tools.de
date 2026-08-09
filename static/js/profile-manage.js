@@ -18,10 +18,10 @@ async function loadManagePage() {
             document.getElementById('manage-price').textContent = isGift ? 'Gifted' : '€5/month';
             document.getElementById('manage-badge').textContent = 'Active';
             document.getElementById('manage-badge').className = 'premium-badge active';
-            document.getElementById('manage-next').textContent = data.expires_at ? new Date(data.expires_at).toLocaleDateString() : '—';
+            document.getElementById('manage-next').textContent = data.expires_at ? new Date(data.expires_at).toLocaleDateString() : '-';
             document.getElementById('manage-subtitle').textContent = isGift ? 'Your Premium was gifted.' : 'Your subscription is active.';
             document.getElementById('manage-expires-row').style.display = '';
-            document.getElementById('manage-expires').textContent = data.expires_at ? new Date(data.expires_at).toLocaleDateString() : '—';
+            document.getElementById('manage-expires').textContent = data.expires_at ? new Date(data.expires_at).toLocaleDateString() : '-';
 
             if (isGift) {
                 document.getElementById('card-cancel').style.display = 'none';
@@ -33,7 +33,7 @@ async function loadManagePage() {
             document.getElementById('manage-price').textContent = 'Expired';
             document.getElementById('manage-badge').textContent = 'Expired';
             document.getElementById('manage-badge').className = 'premium-badge expired';
-            document.getElementById('manage-next').textContent = '—';
+            document.getElementById('manage-next').textContent = '-';
             document.getElementById('manage-subtitle').textContent = 'Your premium has expired. Resubscribe anytime.';
             document.getElementById('card-cancel').style.display = 'none';
         } else {
@@ -41,7 +41,7 @@ async function loadManagePage() {
             document.getElementById('manage-price').textContent = 'You are not a Premium member.';
             document.getElementById('manage-badge').textContent = 'Inactive';
             document.getElementById('manage-badge').className = 'premium-badge expired';
-            document.getElementById('manage-next').textContent = '—';
+            document.getElementById('manage-next').textContent = '-';
             document.getElementById('manage-subtitle').textContent = 'Subscribe to unlock Premium features.';
             document.getElementById('card-cancel').style.display = 'none';
             document.getElementById('card-portal').style.display = 'none';

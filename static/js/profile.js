@@ -88,7 +88,7 @@ function loadOverview(auth) {
         var createdAt = new Date(Number((snowflake >> 22n) + 1420070400000n));
         document.getElementById('ov-joined').textContent = createdAt.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' });
     } catch(e) {
-        document.getElementById('ov-joined').textContent = '—';
+        document.getElementById('ov-joined').textContent = '-';
     }
 
     var copyCount = 0;
@@ -172,15 +172,15 @@ function loadSessions() {
 
                 var isCurrent = ua && currentUA && ua === currentUA;
 
-                var browser = '—';
+                var browser = '-';
                 if (ua.includes('Firefox')) browser = 'Firefox';
                 else if (ua.includes('Edg')) browser = 'Edge';
                 else if (ua.includes('Chrome')) browser = 'Chrome';
                 else if (ua.includes('Safari')) browser = 'Safari';
                 else if (ua.includes('Opera')) browser = 'Opera';
 
-                var os = '—';
-                var device = '—';
+                var os = '-';
+                var device = '-';
                 if (ua.includes('Windows')) { os = 'Windows'; device = 'Desktop'; }
                 else if (ua.includes('Mac')) { os = 'macOS'; device = 'Desktop'; }
                 else if (ua.includes('Linux') && !ua.includes('Android')) { os = 'Linux'; device = 'Desktop'; }
@@ -222,7 +222,7 @@ function revokeSession(id, btn) {
 }
 
 function expiresStr(date) {
-    if (!date) return '—';
+    if (!date) return '-';
     return date.toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
@@ -251,7 +251,7 @@ function loadPremiumHistory() {
                 else statusBadge = '<span class="premium-badge expired">Expired</span>';
                 var typeText = isGift ? 'Gift' : (h.type === 'renewal' ? 'Renewal' : 'Purchase');
                 var isStripeGift = isGift && !!h.stripe_customer_id;
-                var priceText = isGift ? (isStripeGift ? '€4' : '—') : '€5';
+                var priceText = isGift ? (isStripeGift ? '€4' : '-') : '€5';
                 var startText = created.toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' });
                 var boughtBy = isGift && h.gifter_name ? h.gifter_name : 'You';
 

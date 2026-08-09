@@ -790,6 +790,7 @@ p { color: #a1a1aa; line-height: 1.6; margin-bottom: 1.5rem; }
         }
         .p-card-icon.purple { background: rgba(155, 89, 182, 0.15); color: #b366cc; }
         .p-card-icon.pink   { background: rgba(233, 30, 99, 0.12);  color: #e91e63; }
+        .p-card-icon.blue   { background: rgba(52, 152, 219, 0.12);  color: #5dade2; }
 
         .p-card-label {
             font-size: 1.1rem;

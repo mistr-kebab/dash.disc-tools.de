@@ -21,7 +21,7 @@ checkAuth().then(function(auth) {
             document.getElementById('processing-state').classList.remove('state-active');
 
             if (res.ok && data.success) {
-                document.getElementById('user-name').textContent = data.user ? (data.user.global_name || data.user.username) : '—';
+                document.getElementById('user-name').textContent = data.user ? (data.user.global_name || data.user.username) : '-';
                 document.getElementById('server-name').textContent = data.guild ? data.guild.name : 'Disc-Tools';
                 document.getElementById('success-state').classList.add('state-active');
                 history.replaceState({}, '', '/success/invite');

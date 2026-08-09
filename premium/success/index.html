@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome &ndash; Disc-Tools</title>
-    <meta property="og:title" content="Disc-Tools">
-    <meta property="og:description" content="Discord utilities - alt account detection, quote GIFs, and more.">
-    <meta property="og:image" content="https://dash.disc-tools.de/static/assets/img/icon.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <link rel="stylesheet" href="/static/css/main.css">
+    <title>Payment Successful &ndash; Disc-Tools Premium</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#2ECC71">
+    <link rel="stylesheet" href="/static/css/main.css?v=2">
+    <link rel="stylesheet" href="/static/css/success.css">
     <link rel="stylesheet" href="/static/icons/css/all.min.css">
     <link rel="icon" type="image/png" href="/static/assets/img/icon.png">
-    
 </head>
 <body>
     <header>
@@ -23,38 +20,19 @@
             </a>
             <nav class="header-nav">
                 <a href="/" class="nav-link">Dashboard</a>
-                <a href="#" class="nav-link">Premium</a>
+                <a href="/premium" class="nav-link">Premium</a>
                 <a href="/stats" class="nav-link">Stats</a>
             </nav>
             <div class="header-right" id="header-right"></div>
         </div>
     </header>
 
-    <div class="container">
-        <div id="processing-state" class="state state-active">
-            <div class="success-card">
-                <div class="spinner"></div>
-                <h2>Signing you in...</h2>
-                <p class="sub">One moment please.</p>
-            </div>
-        </div>
-
-        <div id="success-state" class="state">
-            <div class="success-card">
-                <div class="checkmark"><i class="fa-solid fa-check"></i></div>
-                <h2>Welcome, <span id="user-name">-</span></h2>
-                <p class="sub">You've been added to the support server.</p>
-                <div class="result-item"><div class="label">Server</div><div class="value" id="server-name">-</div></div>
-                <div class="result-item mt-075"><div class="value text-muted-small">Redirecting to dashboard...</div></div>
-            </div>
-        </div>
-
-        <div id="error-state" class="state">
-            <div class="success-card">
-                <h2>Something went wrong</h2>
-                <p class="sub" id="error-desc">-</p>
-                <a href="/invite" class="btn-secondary">Try again</a>
-            </div>
+    <div class="success-wrap">
+        <div class="success-card">
+            <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h2 id="success-title">Welcome to Premium!</h2>
+            <p id="success-text">Your subscription is active. Join the Discord server and you'll automatically get the Premium role.</p>
+            <a href="/premium" class="btn-back" id="success-btn">Back to Premium <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
 
@@ -66,12 +44,19 @@
                     <span class="footer-brand-name">Disc<span class="accent">-</span>Tools</span>
                 </div>
                 <div class="footer-brand-slogan">Professional Discord Utilities</div>
+                <div class="footer-social">
+                    <a href="https://github.com/mistr-kebab/dash.disc-tools.de" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://discord.gg/rtRs8rhj5u" target="_blank" rel="noopener" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://www.instagram.com/disc.tools" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@disc.tools" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://x.com/disc_tools" target="_blank" rel="noopener" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
             </div>
             <div class="footer-col">
                 <h3>Product</h3>
                 <a href="/">Dashboard</a>
                 <a href="/invite">Invite Bot</a>
-                <a href="#">Premium</a>
+                <a href="/premium">Premium</a>
             </div>
             <div class="footer-col">
                 <h3>Socials</h3>
@@ -97,7 +82,7 @@
 
     <script src="/static/js/auth.js?v=2"></script>
     <script src="/static/js/cookie-banner.js?v=2"></script>
-    <script src="/static/js/invite-success.js?v=2"></script>
+    <script src="/static/js/premium-success.js?v=2"></script>
     <script defer src="https://umami.disc-tools.de/script.js" data-website-id="71c24f0f-5dfe-41b7-a2ba-0585cba7946c"></script>
 </body>
 </html>

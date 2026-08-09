@@ -42,8 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var headGift = document.querySelector('#card-gift .p-card-head');
     if (headGift) headGift.addEventListener('click', function() { toggleCard('card-gift'); });
 
+    var headOnetime = document.querySelector('#card-onetime .p-card-head');
+    if (headOnetime) headOnetime.addEventListener('click', function() { toggleCard('card-onetime'); });
+
     var btnBuy = document.getElementById('btn-buy');
     if (btnBuy) btnBuy.addEventListener('click', startCheckout);
+
+    var btnBuyOnetime = document.getElementById('btn-buy-onetime');
+    if (btnBuyOnetime) btnBuyOnetime.addEventListener('click', startOneTimeCheckout);
 
     var btnCheck = document.getElementById('btn-check');
     if (btnCheck) btnCheck.addEventListener('click', checkRecipient);
@@ -113,6 +119,42 @@ async function startCheckout() {
         showToast('An error occurred. Please try again.');
         btn.disabled = false;
         btn.innerHTML = 'Subscribe Now <i class="fa-solid fa-arrow-right"></i>';
+    }
+}
+
+async function startOneTimeCheckout() {
+    var btn = document.getElementById('btn-buy-onetime');
+    btn.disabled = true;
+    btn.innerHTML = 'Redirecting <i class="fa-solid fa-spinner fa-spin"></i>';
+    try {
+        var auth = await checkAuth();
+        if (!auth.authenticated || !auth.user) {
+            showToast('Please log in with Discord first.');
+            btn.disabled = false;
+            btn.innerHTML = 'Buy 1 Month <i class="fa-solid fa-arrow-right"></i>';
+            return;
+        }
+        var res = await fetch('/api/premium/create-one-time-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userId: auth.user.id,
+                successUrl: window.location.origin + '/premium/success?onetime=1',
+                cancelUrl: window.location.href
+            })
+        });
+        var data = await res.json();
+        if (data.url) {
+            window.location.href = data.url;
+        } else {
+            showToast(data.error || 'Failed to start checkout.');
+            btn.disabled = false;
+            btn.innerHTML = 'Buy 1 Month <i class="fa-solid fa-arrow-right"></i>';
+        }
+    } catch (e) {
+        showToast('An error occurred. Please try again.');
+        btn.disabled = false;
+        btn.innerHTML = 'Buy 1 Month <i class="fa-solid fa-arrow-right"></i>';
     }
 }
 
