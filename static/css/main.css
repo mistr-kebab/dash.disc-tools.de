@@ -619,7 +619,7 @@ p { color: #a1a1aa; line-height: 1.6; margin-bottom: 1.5rem; }
         .btn-secondary:hover { background: #1c1c1f; color: #e1e1e6; }
 
 /* --- Legal Pages --- */
-.legal-container { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+ .legal-container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 .legal-hero { text-align: center; margin-bottom: 2rem; }
 .legal-hero h1 { font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.3rem; letter-spacing: -0.02em; }
 .legal-hero .legal-date { font-size: 0.8rem; color: #52525b; }
